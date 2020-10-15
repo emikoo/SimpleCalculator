@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnGo?.setOnClickListener {
-            tvTotal?.text = "$result"
+            tvTotal?.text = "= $result"
 
             tvPlusOrMinus?.text = "__"
             edFirstNum?.setText("")
