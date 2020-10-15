@@ -17,7 +17,7 @@
         android:textColor="@color/colorWhite"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/btnGo"
+        app:layout_constraintBottom_toTopOf="@id/btnPlus"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,10 +40,10 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     <TextView
-        android:id="@+id/tvPlus"
+        android:id="@+id/tvPlusOrMinus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/plus"
+        android:text="@string/not_chosen"
         android:textColor="@color/colorRed"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@id/tvTotal"
@@ -76,23 +76,53 @@
         android:textColor="@color/colorRed"
         android:textSize="35sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@id/btnGo"
+        app:layout_constraintBottom_toTopOf="@id/btnPlus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPlus" />
+        app:layout_constraintTop_toBottomOf="@id/tvPlusOrMinus" />
+
+    <Button
+        android:id="@+id/btnPlus"
+        android:layout_width="173dp"
+        android:layout_height="55dp"
+        android:background="@color/colorWhite"
+        android:text="@string/plus"
+        android:textColor="@color/colorRed"
+        android:textSize="33sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/btnGo"
+        app:layout_constraintEnd_toStartOf="@id/btnMinus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotal" />
+
+    <Button
+        android:id="@+id/btnMinus"
+        android:layout_width="173dp"
+        android:layout_height="56dp"
+        android:background="@color/colorWhite"
+        android:text="@string/minus"
+        android:textColor="@color/colorRed"
+        android:textSize="37sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/btnGo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnPlus"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotal" />
 
     <Button
         android:id="@+id/btnGo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorRed"
         android:text="@string/go"
         android:textColor="@color/colorBlack"
-        android:textSize="25sp"
+        android:textSize="35sp"
         android:textStyle="bold"
+        android:background="@color/colorRed"
+        android:layout_marginEnd="145dp"
+        android:layout_marginStart="145dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@id/btnPlus" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

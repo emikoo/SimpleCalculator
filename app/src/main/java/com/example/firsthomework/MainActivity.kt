@@ -10,8 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     var tvTotal: TextView? = null
+    var tvPlusOrMinus: TextView? = null
     var edFirstNum: EditText? = null
     var edSecondNum: EditText? = null
+    var btnPlus: Button? = null
+    var btnMinus: Button? = null
     var btnGo: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,20 +27,40 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViews() {
         tvTotal = findViewById(R.id.tvTotal)
+        tvPlusOrMinus = findViewById(R.id.tvPlusOrMinus)
         edFirstNum = findViewById(R.id.edFirstNum)
         edSecondNum = findViewById(R.id.edSecondNum)
+        btnPlus = findViewById(R.id.btnPlus)
+        btnMinus = findViewById(R.id.btnMinus)
         btnGo = findViewById(R.id.btnGo)
     }
 
     @SuppressLint("SetTextI18n")
     private fun getTotal() {
-        btnGo?.setOnClickListener {
+        var result: Int? = null
+
+        btnPlus?.setOnClickListener {
             val firstNum: Int = edFirstNum?.text.toString().toInt()
             val secondNum: Int = edSecondNum?.text.toString().toInt()
 
-            val result: Int = firstNum+secondNum
+            tvTotal?.text = ""
+            tvPlusOrMinus?.text = "+"
+            result = firstNum + secondNum
+        }
 
-            tvTotal?.text = "= $result"
+        btnMinus?.setOnClickListener {
+            val firstNum: Int = edFirstNum?.text.toString().toInt()
+            val secondNum: Int = edSecondNum?.text.toString().toInt()
+
+            tvTotal?.text = ""
+            tvPlusOrMinus?.text = "-"
+            result = firstNum - secondNum
+        }
+
+        btnGo?.setOnClickListener {
+            tvTotal?.text = "$result"
+
+            tvPlusOrMinus?.text = "__"
             edFirstNum?.setText("")
             edSecondNum?.setText("")
         }

@@ -6,4 +6,6 @@
     <string name="go">GO</string>
     <string name="plus">+</string>
     <string name="total">Total</string>
+    <string name="minus">-</string>
+    <string name="not_chosen">__</string>
 </resources>
