@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">FirstHomeWork</string>
-    <string name="title">Складыватель</string>
+    <string name="title">Вычислитель</string>
     <string name="first_num">первое число</string>
     <string name="second_num">второе число</string>
     <string name="go">GO</string>

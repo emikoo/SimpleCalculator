@@ -6,63 +6,52 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var tvTotal: TextView? = null
-    var tvPlusOrMinus: TextView? = null
-    var edFirstNum: EditText? = null
-    var edSecondNum: EditText? = null
-    var btnPlus: Button? = null
-    var btnMinus: Button? = null
-    var btnGo: Button? = null
+    var isMinus = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupViews()
         getTotal()
-    }
-
-    private fun setupViews() {
-        tvTotal = findViewById(R.id.tvTotal)
-        tvPlusOrMinus = findViewById(R.id.tvPlusOrMinus)
-        edFirstNum = findViewById(R.id.edFirstNum)
-        edSecondNum = findViewById(R.id.edSecondNum)
-        btnPlus = findViewById(R.id.btnPlus)
-        btnMinus = findViewById(R.id.btnMinus)
-        btnGo = findViewById(R.id.btnGo)
+        setPlusOperator()
+        setMinusOperator()
     }
 
     @SuppressLint("SetTextI18n")
     private fun getTotal() {
-        var result: Int? = null
+        btnGo.setOnClickListener {
+            val firstNum: Int = edFirstNum.text.toString().toInt()
+            val secondNum: Int = edSecondNum.text.toString().toInt()
+            var result: Int? = null
+            if(isMinus) result = firstNum - secondNum
+            else result = firstNum + secondNum
 
-        btnPlus?.setOnClickListener {
-            val firstNum: Int = edFirstNum?.text.toString().toInt()
-            val secondNum: Int = edSecondNum?.text.toString().toInt()
-
-            tvTotal?.text = ""
-            tvPlusOrMinus?.text = "+"
-            result = firstNum + secondNum
+            tvTotal.text = "= $result"
+            tvPlusOrMinus.text = "__"
+            edFirstNum.text.clear()
+            edSecondNum.text.clear()
         }
+    }
 
-        btnMinus?.setOnClickListener {
-            val firstNum: Int = edFirstNum?.text.toString().toInt()
-            val secondNum: Int = edSecondNum?.text.toString().toInt()
+    private fun setPlusOperator(){
+        btnPlus.setOnClickListener {
+            isMinus = false
 
-            tvTotal?.text = ""
-            tvPlusOrMinus?.text = "-"
-            result = firstNum - secondNum
+            tvTotal.text = ""
+            tvPlusOrMinus.text = "+"
         }
+    }
 
-        btnGo?.setOnClickListener {
-            tvTotal?.text = "= $result"
+    private fun setMinusOperator(){
+        btnMinus.setOnClickListener {
+            isMinus = true
 
-            tvPlusOrMinus?.text = "__"
-            edFirstNum?.setText("")
-            edSecondNum?.setText("")
+            tvTotal.text = ""
+            tvPlusOrMinus.text = "-"
         }
     }
 }
