@@ -1,11 +1,6 @@
 <resources>
     <string name="app_name">FirstHomeWork</string>
-    <string name="title">Вычислитель</string>
-    <string name="first_num">первое число</string>
-    <string name="second_num">второе число</string>
-    <string name="go">GO</string>
-    <string name="plus">+</string>
-    <string name="total">Total</string>
-    <string name="minus">-</string>
-    <string name="not_chosen">__</string>
+    <string name="text">Введите текст</string>
+    <string name="add">добавить</string>
+    <string name="remove">удалить</string>
 </resources>

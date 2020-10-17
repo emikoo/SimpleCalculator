@@ -1,128 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBlack"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tvTitle"
+    <EditText
+        android:id="@+id/edText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/title"
-        android:textAlignment="center"
-        android:textColor="@color/colorWhite"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/btnPlus"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edFirstNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
         android:background="@color/colorWhite"
-        android:gravity="center"
-        android:hint="@string/first_num"
-        android:inputType="number"
+        android:hint="@string/text"
+        android:inputType="text"
         android:maxLength="10"
         android:textColor="@color/colorRed"
         android:textSize="20sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@id/tvTotal"
-        app:layout_constraintEnd_toStartOf="@+id/edSecondNum"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
-
-    <TextView
-        android:id="@+id/tvPlusOrMinus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/not_chosen"
-        android:textColor="@color/colorRed"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@id/tvTotal"
-        app:layout_constraintEnd_toStartOf="@id/edSecondNum"
-        app:layout_constraintStart_toEndOf="@id/edFirstNum"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
-    <EditText
-        android:id="@+id/edSecondNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:gravity="center"
-        android:hint="@string/second_num"
-        android:inputType="number"
-        android:maxLength="10"
-        android:textColor="@color/colorRed"
-        android:textSize="20sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@id/tvTotal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/edFirstNum"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
-
-    <TextView
-        android:id="@+id/tvTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/total"
-        android:textColor="@color/colorRed"
-        android:textSize="35sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@id/btnPlus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPlusOrMinus" />
+        android:textStyle="italic" />
 
     <Button
-        android:id="@+id/btnPlus"
+        android:id="@+id/btnAdd"
         android:layout_width="173dp"
         android:layout_height="55dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/colorWhite"
-        android:text="@string/plus"
+        android:text="@string/add"
         android:textColor="@color/colorRed"
-        android:textSize="33sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/btnGo"
-        app:layout_constraintEnd_toStartOf="@id/btnMinus"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTotal" />
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
     <Button
-        android:id="@+id/btnMinus"
+        android:id="@+id/btnRemove"
         android:layout_width="173dp"
         android:layout_height="56dp"
         android:background="@color/colorWhite"
-        android:text="@string/minus"
+        android:text="@string/remove"
         android:textColor="@color/colorRed"
-        android:textSize="37sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/btnGo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnPlus"
-        app:layout_constraintTop_toBottomOf="@+id/tvTotal" />
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/btnGo"
+    <TextView
+        android:id="@+id/tvList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/go"
-        android:textColor="@color/colorBlack"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:background="@color/colorRed"
-        android:layout_marginEnd="145dp"
-        android:layout_marginStart="145dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnPlus" />
+        android:layout_margin="16dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="15sp"
+        android:textStyle="italic" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
