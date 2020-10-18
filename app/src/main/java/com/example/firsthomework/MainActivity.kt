@@ -29,6 +29,10 @@ class MainActivity : AppCompatActivity() {
             val value = edText.text.toString()
             if (value.isBlank() || value.isEmpty()) {
                 edText.text.clear()
+                Toast.makeText(this, "Нельзя добавить пустое значение", Toast.LENGTH_LONG).show()
+            } else if (edText.length() <= 3){
+                edText.text.clear()
+                Toast.makeText(this, "Значение должно быть больше 3-х символов.", Toast.LENGTH_LONG).show()
             } else {
                 edText.text.clear()
                 textArray.add(value)
@@ -39,9 +43,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun removeFromArray(){
         btnRemove.setOnClickListener {
-            var value = edText.text.toString()
+            val value = edText.text.toString()
             if (value.isBlank() || value.isEmpty()) {
                 edText.text.clear()
+                Toast.makeText(this, "Введите значение", Toast.LENGTH_LONG).show()
             } else {
                 edText.text.clear()
                 findAndRemoveFromArray(value)
@@ -57,6 +62,8 @@ class MainActivity : AppCompatActivity() {
             if (text == value) {
                 indexOfArray = i
                 elements = text
+            } else {
+                Toast.makeText(this, "Элемент для удаления не найден", Toast.LENGTH_LONG).show()
             }
         }
         if(indexOfArray != null){
