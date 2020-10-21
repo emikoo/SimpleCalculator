@@ -1,58 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorBlack"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <EditText
-        android:id="@+id/edText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
-        android:background="@color/colorWhite"
-        android:hint="@string/text"
-        android:inputType="text"
-        android:maxLength="10"
-        android:textColor="@color/colorRed"
-        android:textSize="20sp"
-        android:textStyle="italic" />
-
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="173dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorWhite"
-        android:text="@string/add"
-        android:textColor="@color/colorRed"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
-
-    <Button
-        android:id="@+id/btnRemove"
-        android:layout_width="173dp"
-        android:layout_height="56dp"
-        android:background="@color/colorWhite"
-        android:text="@string/remove"
-        android:textColor="@color/colorRed"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/tvList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textAlignment="center"
-        android:textColor="@color/colorWhite"
-        android:textSize="15sp"
-        android:textStyle="italic" />
+    android:layout_height="match_parent">
 
 </LinearLayout>

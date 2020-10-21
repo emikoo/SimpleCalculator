@@ -2,6 +2,7 @@ package com.example.firsthomework
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -9,74 +10,46 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.constraint_layout.*
 
 class MainActivity : AppCompatActivity() {
 
-    var textArray = mutableListOf<String>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.constraint_layout)
 
-        addToArray()
-        removeFromArray()
+        saveInfoInET()
     }
 
-    //textChangedListener
+    private fun saveInfoInET(){
+        btnSave.setOnClickListener {
+            val phoneNumber = edPhoneNumber.text.toString()
+            val cityName = edCityName.text.toString()
+            val regionName = edRegionName.text.toString()
 
-    private fun addToArray(){
-        btnAdd.setOnClickListener {
-            val value = edText.text.toString()
-            if (value.isBlank() || value.isEmpty()) {
-                edText.text.clear()
-                Toast.makeText(this, "Нельзя добавить пустое значение", Toast.LENGTH_LONG).show()
-            } else if (edText.length() <= 3){
-                edText.text.clear()
-                Toast.makeText(this, "Значение должно быть больше 3-х символов.", Toast.LENGTH_LONG).show()
+            if(phoneNumber.isEmpty()){
+                showToast("Поле номер телефона не может быть пустым")
+                clearET()
+            } else if(cityName.isEmpty()){
+                showToast("Поле города не может быть пустым")
+                clearET()
+            } else if(regionName.isEmpty()){
+                showToast("Поле область не может быть пустым")
+                clearET()
             } else {
-                edText.text.clear()
-                textArray.add(value)
-                displayArray()
+                val allInformation = "$phoneNumber $cityName $regionName \n"
+                Log.v("ACTIVITY_INFORMATION", allInformation)
             }
         }
     }
 
-    private fun removeFromArray(){
-        btnRemove.setOnClickListener {
-            val value = edText.text.toString()
-            if (value.isBlank() || value.isEmpty()) {
-                edText.text.clear()
-                Toast.makeText(this, "Введите значение", Toast.LENGTH_LONG).show()
-            } else {
-                edText.text.clear()
-                findAndRemoveFromArray(value)
-                displayArray()
-            }
-        }
+    private fun clearET(){
+        edPhoneNumber.text.clear()
+        edCityName.text.clear()
+        edRegionName.text.clear()
     }
 
-    private fun findAndRemoveFromArray(value: String) {
-        var indexOfArray: Int? = null
-        var elements = ""
-        for((i,text) in textArray.withIndex()){
-            if (text == value) {
-                indexOfArray = i
-                elements = text
-            } else {
-                Toast.makeText(this, "Элемент для удаления не найден", Toast.LENGTH_LONG).show()
-            }
-        }
-        if(indexOfArray != null){
-            textArray.removeAt(indexOfArray)
-            Toast.makeText(this, "$elements удален", Toast.LENGTH_LONG).show()
-        }
-    }
-
-    private fun displayArray() {
-        var result = ""
-        for(list in textArray){
-            result = "$result $list \n"
-        }
-        tvList.text = result
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 }
