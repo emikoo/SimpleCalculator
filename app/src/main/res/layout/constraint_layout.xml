@@ -12,7 +12,7 @@
         android:layout_margin="16dp"
         android:background="@color/colorWhite"
         android:gravity="center"
-        android:text="Города Японии"
+        android:text="@string/cities_of_japan_title"
         android:textColor="@color/colorBlack"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -24,8 +24,9 @@
     <ImageView
         android:id="@+id/image"
         android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_height="170dp"
         android:src="@drawable/ic_japan"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@id/description_text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,11 +45,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/image"
-        tools:text="Название города" />
+        android:text="@string/search_cities_title" />
 
     <TextView
         android:id="@+id/description_text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textColor="@color/colorRed"

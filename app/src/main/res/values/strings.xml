@@ -11,4 +11,6 @@
     <string name="ed_city_name">Введите город</string>
     <string name="btn_save">Сохранить</string>
     <string name="ed_region_name">Введите область</string>
+    <string name="search_cities_title">Начните поиск городов</string>
+    <string name="cities_of_japan_title">Города Японии</string>
 </resources>
