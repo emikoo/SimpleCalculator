@@ -1,16 +1,6 @@
 <resources>
     <string name="app_name">FirstHomeWork</string>
     <string name="text">Введите текст</string>
-    <string name="username">Имя пользователя:</string>
-    <string name="last_name">Фамилия пользователя:</string>
-    <string name="age">Возраст пользователя:</string>
-    <string name="phone_number">Номер телефона:</string>
-    <string name="city_name">Город:</string>
-    <string name="region_name">Область:</string>
-    <string name="text_phone_number">Введите номер телефона</string>
-    <string name="ed_city_name">Введите город</string>
-    <string name="btn_save">Сохранить</string>
-    <string name="ed_region_name">Введите область</string>
-    <string name="search_cities_title">Начните поиск городов</string>
-    <string name="cities_of_japan_title">Города Японии</string>
+    <string name="show_all_values">show all values</string>
+    <string name="show">show</string>
 </resources>
