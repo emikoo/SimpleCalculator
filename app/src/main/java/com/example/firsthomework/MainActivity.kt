@@ -7,58 +7,18 @@ import kotlinx.android.synthetic.main.constraint_layout.*
 
 class MainActivity : AppCompatActivity() {
 
-    var descriptionArray: List<City>? = null
-    var indexOfArray: Int? = null
+    private var descriptionArray: List<City>? = null
+    private var indexOfArray: Int? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.constraint_layout)
-
-        changeIconAction()
-    }
-
-    private fun changeIconAction() {
-        refresh_image_button.setOnClickListener {
-            val citiesRandom = citiesArray.random()
-            image.setImageResource(citiesRandom)
-
-            getIndexFromElement(citiesRandom)
-        }
-    }
-
-    private fun getIndexFromElement(element: Int) {
-        cityArray()
-        for ((index, value) in citiesArray.withIndex()) {
-            if (value == element) indexOfArray = index
-        }
-        getDescriptionToImage(0)
-        getDescriptionToImage(1)
-        getDescriptionToImage(2)
-        getDescriptionToImage(3)
-        getDescriptionToImage(4)
-        getDescriptionToImage(5)
-        getDescriptionToImage(6)
-
-        return
-    }
-
-    private fun getDescriptionToImage(index: Int){
-        if (indexOfArray == index) {
-            title_text_view.text = descriptionArray?.get(index)?.name
-            description_text_view.text = descriptionArray?.get(index)?.description
-        }
-        return
-    }
-
-    private val citiesArray = mutableListOf<Int>().apply {
-        R.mipmap.ic_tokyo
-        R.mipmap.ic_fukuoka
-        R.mipmap.ic_kyoto
-        R.mipmap.ic_nagoya
-        R.mipmap.ic_osaka
-        R.mipmap.ic_sapporo
+    private var citiesArray = arrayOf(
+        R.mipmap.ic_tokyo,
+        R.mipmap.ic_fukuoka,
+        R.mipmap.ic_kyoto,
+        R.mipmap.ic_nagoya,
+        R.mipmap.ic_osaka,
+        R.mipmap.ic_sapporo,
         R.mipmap.ic_yokohama
-    }
+    )
 
     private fun cityArray() {
         descriptionArray = listOf(
@@ -90,5 +50,44 @@ class MainActivity : AppCompatActivity() {
                         "Сегодня это мощный экономический и промышленный центр."
             )
         )
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.constraint_layout)
+
+        cityArray()
+        changeIconAction()
+    }
+
+    private fun changeIconAction() {
+        refresh_image_button.setOnClickListener {
+            val citiesRandom = citiesArray.random()
+            image.setImageResource(citiesRandom)
+
+            getIndexFromElement(citiesRandom)
+        }
+    }
+
+    private fun getIndexFromElement(element: Int) {
+        for ((index, value) in citiesArray.withIndex()) {
+            if (value == element) indexOfArray = index
+            getDescriptionToImage(0)
+            getDescriptionToImage(1)
+            getDescriptionToImage(2)
+            getDescriptionToImage(3)
+            getDescriptionToImage(4)
+            getDescriptionToImage(5)
+            getDescriptionToImage(6)
+        }
+        return
+    }
+
+    private fun getDescriptionToImage(index: Int){
+        if (indexOfArray == index) {
+            city_name_text_view.text = descriptionArray?.get(index)?.name
+            description_text_view.text = descriptionArray?.get(index)?.description
+        }
+        return
     }
 }
