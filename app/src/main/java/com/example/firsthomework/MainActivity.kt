@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    //Каждый раз когда вы нажимаете на кнопку перейти на 2-й активити, то добавлять ваше значение в Array
-    //Добавить вторую кнопку в mainActivity, при нажатии на которую вы будете выводить все значения в Toast
 
     var text: String? = null
     var array = mutableListOf<String>()
@@ -42,18 +40,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showArrayAction(){
+    private fun showArrayAction() {
         btnShowAllValues.setOnClickListener {
-                getArray()
+            var list = ""
+            array.forEach {
+                list = if(list.isEmpty()){
+                    "$it"
+                } else {
+                    "$list $it \n"
+                }
+                showToast(list)
+            }
         }
-    }
-
-    private fun getArray() {
-        var list = ""
-        for (listArray in array) {
-            list = "$list $listArray \n"
-        }
-        showToast(list)
     }
 
     @SuppressLint("ShowToast")
