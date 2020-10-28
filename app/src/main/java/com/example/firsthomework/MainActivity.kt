@@ -3,61 +3,56 @@ package com.example.firsthomework
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var text: String? = null
-    var array = mutableListOf<String>()
-    var toast: Toast? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        getValueAction()
-        showArrayAction()
+        showSymbol()
+        getResetAction()
     }
 
-    private fun getValueAction() {
-        btnShow.setOnClickListener {
-            text = edText.text.toString()
+    private fun showSymbol(){
+        btnSymbol("1", btn1)
+        btnSymbol("2", btn2)
+        btnSymbol("3", btn3)
+        btnSymbol("4", btn4)
+        btnSymbol("5", btn5)
+        btnSymbol("6", btn6)
+        btnSymbol("7", btn7)
+        btnSymbol("8", btn8)
+        btnSymbol("9", btn9)
 
-            if (text!!.isEmpty() || text!!.isBlank()) {
-                showToast("Поле не дожно быть пустым")
-                edText.text.clear()
-            } else {
-                array.add("$text")
+        btnSymbol("÷", btnShare)
+        btnSymbol("×", btnPow)
+        btnSymbol("–", btnMinus)
+        btnSymbol("+", btnPlus)
+    }
 
-                val intent = Intent(this, SecondActivity::class.java)
-                intent.putExtra("text", text)
-                edText.text.clear()
+    private fun getDeleteLastSymbolAction({
+        btnDelete.setOnClickListener {
 
-                startActivity(intent)
-            }
+        }
+    })
+
+    private fun getResetAction(){
+        btnReset.setOnClickListener {
+            tvProcess.text = ""
         }
     }
 
-    private fun showArrayAction() {
-        btnShowAllValues.setOnClickListener {
-            var list = ""
-            array.forEach {
-                list = if(list.isEmpty()){
-                    "$it"
-                } else {
-                    "$list $it \n"
-                }
-                showToast(list)
-            }
+    private fun btnSymbol(symbol: String, btn: Button) {
+        btn.setOnClickListener {
+            var default = tvProcess.text.toString()
+            default += "$symbol"
+            tvProcess.text = default
         }
     }
 
-    @SuppressLint("ShowToast")
-    private fun showToast(message: String) {
-        if (toast != null) toast?.cancel()
-        toast = Toast.makeText(this, message, Toast.LENGTH_LONG)
-        toast?.show()
-    }
 }

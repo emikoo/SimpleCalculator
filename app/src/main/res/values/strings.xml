@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">FirstHomeWork</string>
-    <string name="text">Введите текст</string>
-    <string name="show_all_values">show all values</string>
-    <string name="show">show</string>
 </resources>
