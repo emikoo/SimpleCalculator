@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
                     tvResult.text = sum.toString()
                 }
                 "÷" -> {
-                    val sum = enteredNumber / lastNumber.toDouble()
+                    val sum = enteredNumber / lastNumber.toFloat()
                     tvProcess.text = ""
                     tvResult.text = sum.toString()
                 }
