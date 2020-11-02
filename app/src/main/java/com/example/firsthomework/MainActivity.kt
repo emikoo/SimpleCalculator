@@ -1,87 +1,107 @@
 package com.example.firsthomework
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var enteredNumber = 0
+    private var enteredNumber: Float = 0.0f
     private var operand = ""
     private var default = ""
     private var lastNumber = ""
+    private val decimalArrayButtons = mutableListOf<Button>()
+    private val operandArrayButtons = mutableListOf<Button>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        showSymbol()
         btnDelete()
         btnReset()
         btnEquals()
+
+        setDecimalButtonsToArray()
+        setDecimalButtons()
+
+        setOperandButtonsToArray()
+        setOperandButtons()
     }
 
-    private fun showSymbol(){
-        btnDecimal("0", btn0)
-        btnDecimal("1", btn1)
-        btnDecimal("2", btn2)
-        btnDecimal("3", btn3)
-        btnDecimal("4", btn4)
-        btnDecimal("5", btn5)
-        btnDecimal("6", btn6)
-        btnDecimal("7", btn7)
-        btnDecimal("8", btn8)
-        btnDecimal("9", btn9)
-
-        getOperandAction("+", btnPlus)
-        getOperandAction("–", btnMinus)
-        getOperandAction("×", btnPow)
-        getOperandAction("÷", btnSplit)
-    }
-
-    private fun btnDecimal(number: String, btn: Button) {
-        btn.setOnClickListener {
-            default = tvProcess.text.toString()
-            default += "$number"
-            lastNumber += "$number"
-            tvProcess.text = default
+    private fun setDecimalButtonsToArray() {
+        decimalArrayButtons.apply {
+            add(btn0)
+            add(btn1)
+            add(btn2)
+            add(btn3)
+            add(btn4)
+            add(btn5)
+            add(btn6)
+            add(btn7)
+            add(btn8)
+            add(btn9)
+            add(btnPoint)
         }
     }
 
-    private fun getOperandAction(operando: String, btn: Button) {
-        btn.setOnClickListener {
-            operand = operando
-            default = tvProcess.text.toString()
-            if (isDecimal(default.last())) {
-                if (enteredNumber == 0) enteredNumber += lastNumber.toInt()
-                else enteredNumber *= lastNumber.toInt()
-                lastNumber = ""
-                default += "$operando"
-                tvProcess.text = default
-            } else {
-                default = default.dropLast(1)
-                default += "$operando"
+    private fun setOperandButtonsToArray() {
+        operandArrayButtons.apply {
+            add(btnPlus)
+            add(btnMinus)
+            add(btnPow)
+            add(btnSplit)
+        }
+    }
+
+    private fun setDecimalButtons() {
+        for (btn in decimalArrayButtons) {
+            btn.setOnClickListener {
+                default = tvProcess.text.toString()
+                default += btn.text
+                lastNumber += btn.text
                 tvProcess.text = default
             }
         }
     }
 
+    private fun setOperandButtons(){
+        for(btn in operandArrayButtons){
+            btn.setOnClickListener {
+                getOperandAction(btn.text as String)
+            }
+        }
+    }
+
+    private fun getOperandAction(type: String) {
+        default = tvProcess.text.toString()
+        if (isDecimal(default.last())) {
+            if (enteredNumber == 0.0f) enteredNumber += lastNumber.toFloat()
+            lastNumber = ""
+        } else {
+            default = default.dropLast(1)
+        }
+            default += type
+        if (tvProcess.text.isEmpty()){
+            tvResult.text = default
+            tvProcess.text = ""
+        }
+        else tvProcess.text = default
+        operand = type
+    }
+
     private fun btnDelete(){
         btnDelete.setOnClickListener{
-            default = tvProcess.text.toString()
-            default = default.dropLast(1)
-            tvProcess.text = default
+            if (default.isNotEmpty()){
+                default = default.dropLast(1)
+                tvProcess.text = default
+            }
         }
     }
 
     private fun btnReset() {
         btnReset.setOnClickListener {
-            enteredNumber = 0
+            enteredNumber = 0.0f
             lastNumber = ""
             tvProcess.text = ""
             tvResult.text = ""
@@ -91,27 +111,14 @@ class MainActivity : AppCompatActivity() {
     private fun btnEquals() {
         btnEquals.setOnClickListener {
             when (operand) {
-                "×" -> {
-                    val sum = enteredNumber * lastNumber.toInt()
-                    tvProcess.text = ""
-                    tvResult.text = sum.toString()
-                }
-                "÷" -> {
-                    val sum = enteredNumber / lastNumber.toFloat()
-                    tvProcess.text = ""
-                    tvResult.text = sum.toString()
-                }
-                "+" -> {
-                    val sum = enteredNumber + lastNumber.toInt()
-                    tvProcess.text = ""
-                    tvResult.text = sum.toString()
-                }
-                "–" -> {
-                    val sum = enteredNumber - lastNumber.toInt()
-                    tvProcess.text = ""
-                    tvResult.text = sum.toString()
-                }
+                "×" -> enteredNumber *= lastNumber.toFloat()
+                "÷" -> enteredNumber /= lastNumber.toFloat()
+                "+" -> enteredNumber += lastNumber.toFloat()
+                "–" -> enteredNumber -= lastNumber.toFloat()
             }
+            tvResult.text = enteredNumber.toString()
+            tvProcess.text = enteredNumber.toString()
+            lastNumber = ""
         }
     }
 
