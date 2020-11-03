@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
 
@@ -65,8 +66,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setOperandButtons(){
-        for(btn in operandArrayButtons){
+    private fun setOperandButtons() {
+        for (btn in operandArrayButtons) {
             btn.setOnClickListener {
                 getOperandAction(btn.text as String)
             }
@@ -74,6 +75,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getOperandAction(type: String) {
+        var text = tvProcess.text.toString()
+        if (text.isNullOrEmpty()) {
+            return
+        }
         default = tvProcess.text.toString()
         if (isDecimal(default.last())) {
             if (enteredNumber == 0.0f) enteredNumber += lastNumber.toFloat()
@@ -81,18 +86,17 @@ class MainActivity : AppCompatActivity() {
         } else {
             default = default.dropLast(1)
         }
-            default += type
-        if (tvProcess.text.isEmpty()){
+        default += type
+        if (tvProcess.text.isEmpty()) {
             tvResult.text = default
             tvProcess.text = ""
-        }
-        else tvProcess.text = default
+        } else tvProcess.text = default
         operand = type
     }
 
-    private fun btnDelete(){
-        btnDelete.setOnClickListener{
-            if (default.isNotEmpty()){
+    private fun btnDelete() {
+        btnDelete.setOnClickListener {
+            if (default.isNotEmpty()) {
                 default = default.dropLast(1)
                 tvProcess.text = default
             }
@@ -111,15 +115,33 @@ class MainActivity : AppCompatActivity() {
     private fun btnEquals() {
         btnEquals.setOnClickListener {
             when (operand) {
-                "×" -> enteredNumber *= lastNumber.toFloat()
-                "÷" -> enteredNumber /= lastNumber.toFloat()
-                "+" -> enteredNumber += lastNumber.toFloat()
-                "–" -> enteredNumber -= lastNumber.toFloat()
+                "×" -> {
+                    enteredNumber *= lastNumber.toFloat()
+                }
+                "÷" -> {
+                    enteredNumber /= lastNumber.toFloat()
+                }
+                "+" -> {
+                    enteredNumber += lastNumber.toFloat()
+                }
+                "–" -> {
+                    enteredNumber -= lastNumber.toFloat()
+                }
             }
-            tvResult.text = enteredNumber.toString()
-            tvProcess.text = enteredNumber.toString()
-            lastNumber = ""
+            getResultAction()
         }
+    }
+
+    private fun getResultAction() {
+        if (enteredNumber % 1 == 0.0f) {
+            tvResult.text = enteredNumber.roundToInt().toString()
+            tvProcess.text = enteredNumber.roundToInt().toString()
+
+        } else {
+            tvProcess.text = String.format("%.2f", enteredNumber)
+            tvResult.text = String.format("%.2f", enteredNumber)
+        }
+        lastNumber = ""
     }
 
     private fun isDecimal(last: Char): Boolean {
