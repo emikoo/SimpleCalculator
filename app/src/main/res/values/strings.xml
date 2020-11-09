@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">FirstHomeWork</string>
+
+    <string name="login_isnt_found">Логин не найден</string>
+    <string name="fill_in_login">Заполните поле логина</string>
+    <string name="fill_in_all_fields">Заполните все поля</string>
+    <string name="you_registered">Вы успешно зарегистрировались !</string>
+    <string name="you_logged_in">Вы успешно авторизировались !</string>
+    <string name="login">Введите логин</string>
+    <string name="log_in">log in</string>
+    <string name="sign_up">sign up</string>
+    <string name="password">Введите пароль</string>
+    <string name="sign_in">sign in</string>
+    <string name="confirm_password">Повторите пароль</string>
+    <string name="passwords_arent_same">Пароли не совпадают</string>
+    <string name="this_login_is_existed">Этот логин уже существует</string>
+    <string name="password_6_symbols">Пароль должен быть не менее 6 символов</string>
+    <string name="login_6_symbols">Логин должен быть не менее 6 символов</string>
+    <string name="password_isnt_found">Парольф не найден</string>
 </resources>

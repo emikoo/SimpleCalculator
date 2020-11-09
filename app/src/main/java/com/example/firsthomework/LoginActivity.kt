@@ -7,32 +7,46 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
+    //0. !!!ПОДГОТОВИТЬ ВОПРОСЫ ПО ТЕМАМ, КОТОРЫЕ НЕ ПОНЯТНЫ!!!
+//2. (RegistrationActivity) Вынести проверку значений в EditText в отдельный метод
+/*4. (RegistrationActivity,
+      LoginActivity,
+      PasswordActivity) Вынести их проверки полей в отдельный файл */
+//5.  Вынести переход на новую актвити в отдельный файл
 
     private lateinit var shared: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         shared = SharedPreferences(this)
-        setSharedDataAction()
+
+        registrationAction()
+        loginAction()
     }
 
-    private fun setSharedDataAction(){
+    private fun registrationAction() {
+        registration_button.setOnClickListener {
+            val intent = Intent(this, RegistrationActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun loginAction() {
         login_btn.setOnClickListener {
-            var login = login_edit_text.text.toString()
-            if (!login.isNullOrEmpty()){
-                shared.myLogin = "${shared.myLogin} $login \n"
-
+            val login = login_edit_text.text.toString()
+            if (login.isNotEmpty()) {
+                if (login != shared.myLogin) {
+                    showToast(this, getString(R.string.login_isnt_found))
+                    login_edit_text.setText("")
+                    return@setOnClickListener
+                    finish()
+                }
                 val intent = Intent(this, PasswordActivity::class.java)
-                intent.putExtra("login", shared.myLogin)
                 startActivity(intent)
-
-                finish()
             } else {
-                Toast.makeText(this, "Ошибка", Toast.LENGTH_SHORT).show()
+                showToast(this, getString(R.string.fill_in_login))
             }
         }
-
     }
 }

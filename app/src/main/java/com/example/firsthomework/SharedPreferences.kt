@@ -4,18 +4,41 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
 
-const val TEXT_LOGIN = "login_from_edit_text"
+const val LOGIN = "login"
+const val PASSWORD = "password"
+const val CONFIRM_PASSWORD = "confirm_password"
 
 class SharedPreferences(context: Context) {
-    private val sharedPreferences: SharedPreferences = context.getSharedPreferences("kotlin-app", Context.MODE_PRIVATE)
+    private val sharedPreferences: SharedPreferences =
+        context.getSharedPreferences("kotlin-app", Context.MODE_PRIVATE)
 
     var myLogin: String
-        get(){
-            return sharedPreferences.getStringOrDefault(TEXT_LOGIN)
-    }
+        get() {
+            return sharedPreferences.getStringOrDefault(LOGIN)
+        }
         set(value) {
-            sharedPreferences.edit{
-                putString(TEXT_LOGIN, value)
+            sharedPreferences.edit {
+                putString(LOGIN, value)
+            }
+        }
+
+    var password: String
+        get() {
+            return sharedPreferences.getStringOrDefault(PASSWORD)
+        }
+        set(value) {
+            sharedPreferences.edit() {
+                putString(PASSWORD, value)
+            }
+        }
+
+    var confirmPassword: String
+        get() {
+            return sharedPreferences.getStringOrDefault(CONFIRM_PASSWORD)
+        }
+        set(value) {
+            sharedPreferences.edit() {
+                putString(CONFIRM_PASSWORD, value)
             }
         }
 
