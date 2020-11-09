@@ -16,5 +16,5 @@
     <string name="this_login_is_existed">Этот логин уже существует</string>
     <string name="password_6_symbols">Пароль должен быть не менее 6 символов</string>
     <string name="login_6_symbols">Логин должен быть не менее 6 символов</string>
-    <string name="password_isnt_found">Парольф не найден</string>
+    <string name="password_isnt_found">Пароль не найден</string>
 </resources>

@@ -18,19 +18,12 @@ class PasswordActivity : AppCompatActivity() {
     }
 
     private fun confirmAction() {
-        confirm_password_btn.setOnClickListener {
+        confirm_password_btn.setOnClickListener click@{
             val password = password_edit_text.text.toString()
-            if (password.isNotEmpty()){
-                if(password != shared.password){
-                    showToast(this, getString(R.string.password_isnt_found))
-                    return@setOnClickListener
-                    finish()
-                }
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            } else {
-                showToast(this, getString(R.string.password))
-            }
+            if (checkFieldIsEmpty(password, this, getString(R.string.password))) return@click
+            if (checkFieldNotSame(password, shared.password, this, getString(R.string.password_isnt_found))) return@click
+            startActivityAction(this, MainActivity::class.java)
+            finish()
         }
     }
 }

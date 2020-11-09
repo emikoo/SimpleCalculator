@@ -27,26 +27,17 @@ class LoginActivity : AppCompatActivity() {
 
     private fun registrationAction() {
         registration_button.setOnClickListener {
-            val intent = Intent(this, RegistrationActivity::class.java)
-            startActivity(intent)
+            startActivityAction(this, RegistrationActivity::class.java)
         }
     }
 
     private fun loginAction() {
-        login_btn.setOnClickListener {
+        login_btn.setOnClickListener click@{
             val login = login_edit_text.text.toString()
-            if (login.isNotEmpty()) {
-                if (login != shared.myLogin) {
-                    showToast(this, getString(R.string.login_isnt_found))
-                    login_edit_text.setText("")
-                    return@setOnClickListener
-                    finish()
-                }
-                val intent = Intent(this, PasswordActivity::class.java)
-                startActivity(intent)
-            } else {
-                showToast(this, getString(R.string.fill_in_login))
-            }
+            if(checkFieldIsEmpty(login, this, getString(R.string.fill_in_login))) return@click
+            if (checkFieldNotSame(login, shared.myLogin, this, getString(R.string.login_isnt_found))) return@click
+            startActivityAction(this, PasswordActivity::class.java)
+            finish()
         }
     }
 }

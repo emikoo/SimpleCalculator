@@ -21,44 +21,31 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun registrationAction() {
-        registration_button.setOnClickListener {
+        registration_button.setOnClickListener click@ {
             val login = login_edit_text.text.toString()
             val password = password_edit_text.text.toString()
             val confirmPassword = confirm_password_edit_text.text.toString()
 
-            if (login.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                showToast(this, getString(R.string.fill_in_all_fields))
-                return@setOnClickListener
-            }
+            if (checkFieldIsEmpty(login, this, getString(R.string.fill_in_all_fields))) return@click
+            if (checkFieldIsEmpty(password, this, getString(R.string.fill_in_all_fields))) return@click
+            if (checkFieldIsEmpty(confirmPassword, this, getString(R.string.fill_in_all_fields))) return@click
 
-            if (login.length <= 5){
-                showToast(this, getString(R.string.login_6_symbols))
-                return@setOnClickListener
-            }
+            if (checkFieldLength(login, this, getString(R.string.login_6_symbols))) return@click
+            if (checkFieldLength(password, this, getString(R.string.password_6_symbols))) return@click
 
-            if (login == shared.myLogin){
-                showToast(this, getString(R.string.this_login_is_existed))
-                return@setOnClickListener
-            }
+            if (checkFieldIsSame(login, shared.myLogin, this, getString(R.string.this_login_is_existed)))
+            if (checkFieldNotSame(password, confirmPassword, this, getString(R.string.passwords_arent_same))) return@click
 
-            if (password.length <= 5){
-                showToast(this, getString(R.string.password_6_symbols))
-                return@setOnClickListener
-            }
-
-            if (password != confirmPassword){
-                showToast(this, getString(R.string.passwords_arent_same))
-                return@setOnClickListener
-            }
-
-            shared.myLogin = login
-            shared.password = password
-            shared.confirmPassword = confirmPassword
-            showToast(this, getString(R.string.you_registered))
-
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            successRegistered(login, password, confirmPassword)
+            startActivityAction(this, MainActivity::class.java)
         }
+    }
+
+    private fun successRegistered(login: String, password: String, confirmPassword: String) {
+        shared.myLogin = login
+        shared.password = password
+        shared.confirmPassword = confirmPassword
+        showToast(this, getString(R.string.you_registered))
+        finish()
     }
 }
