@@ -7,13 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
-    //0. !!!ПОДГОТОВИТЬ ВОПРОСЫ ПО ТЕМАМ, КОТОРЫЕ НЕ ПОНЯТНЫ!!!
-//2. (RegistrationActivity) Вынести проверку значений в EditText в отдельный метод
-/*4. (RegistrationActivity,
-      LoginActivity,
-      PasswordActivity) Вынести их проверки полей в отдельный файл */
-//5.  Вынести переход на новую актвити в отдельный файл
-
+    
     private lateinit var shared: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
