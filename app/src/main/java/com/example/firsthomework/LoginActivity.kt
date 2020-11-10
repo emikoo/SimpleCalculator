@@ -15,8 +15,12 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         shared = SharedPreferences(this)
 
-        registrationAction()
-        loginAction()
+        if(!shared.isAuthorization){
+            startActivityAction(this, MainActivity::class.java)
+        } else {
+            registrationAction()
+            loginAction()
+        }
     }
 
     private fun registrationAction() {

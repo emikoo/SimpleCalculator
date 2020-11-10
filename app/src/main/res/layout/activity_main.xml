@@ -14,4 +14,9 @@
         android:textSize="@dimen/sp_18"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/logout_btn"
+        android:text="@string/log_out"
+        style="@style/button" />
+
 </LinearLayout>

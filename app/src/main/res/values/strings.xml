@@ -17,4 +17,5 @@
     <string name="password_6_symbols">Пароль должен быть не менее 6 символов</string>
     <string name="login_6_symbols">Логин должен быть не менее 6 символов</string>
     <string name="password_isnt_found">Пароль не найден</string>
+    <string name="log_out">log out</string>
 </resources>
