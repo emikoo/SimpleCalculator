@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clearSPAction() {
-        shared.myLogin = ""f
+        shared.myLogin = ""
         shared.password = ""
         shared.confirmPassword = ""
         finish()
