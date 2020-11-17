@@ -2,34 +2,23 @@ package com.example.firsthomework
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var shared: SharedPreferences
+    private lateinit var adapter: MainAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        shared = SharedPreferences(this)
-        shared.isAuthorization = false
-
-        logoutAction()
+        setupAdapter()
     }
 
-    private fun logoutAction(){
-        logout_btn.setOnClickListener {
-            clearSPAction()
-            shared.isAuthorization = true
-            startActivityAction(this, LoginActivity::class.java)
-        }
-    }
-
-    private fun clearSPAction() {
-        shared.myLogin = ""
-        shared.password = ""
-        shared.confirmPassword = ""
-        finish()
+    private fun setupAdapter() {
+        adapter = MainAdapter()
+        recycler_view.layoutManager = LinearLayoutManager(this)
+        recycler_view.adapter = adapter
+        adapter.updateItems(cityArray)
     }
 }
