@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="dp_16">16dp</dimen>
-    <dimen name="sp_18">18sp</dimen>
-    <dimen name="dp_64">64dp</dimen>
-    <dimen name="dp_8">8dp</dimen>
-    <dimen name="dp_150">150dp</dimen>
-    <dimen name="sp_24">24sp</dimen>
-    <dimen name="sp_12">12sp</dimen>
-    <dimen name="sp_10">10sp</dimen>
+    <dimen name="activity_dp_16">16dp</dimen>
+    <dimen name="text_size_sp_24">24sp</dimen>
+    <dimen name="text_size_sp_8">8sp</dimen>
+    <dimen name="radius_dp_18">18dp</dimen>
+    <dimen name="view_dp_0">0dp</dimen>
+    <dimen name="text_size_sp_10">10sp</dimen>
+    <dimen name="text_size_sp_18">18sp</dimen>
+    <dimen name="view_100_dp">100dp</dimen>
+    <dimen name="radius_dp_14">14dp</dimen>
+    <dimen name="view_150_dp">150dp</dimen>
+    <dimen name="margin_dp_8">8dp</dimen>
+    <dimen name="padding_8_dp">8dp</dimen>
 </resources>

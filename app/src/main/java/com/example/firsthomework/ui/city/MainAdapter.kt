@@ -1,14 +1,16 @@
-package com.example.firsthomework
+package com.example.firsthomework.ui.city
 
-import android.media.Image
+import android.net.sip.SipSession
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firsthomework.ui.City
+import com.example.firsthomework.R
 
-class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter(private var listener: Listener) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     var array = mutableListOf<City>()
 
@@ -27,6 +29,9 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
         holder.image.setImageResource(item.image)
         holder.name.text = item.name
         holder.description.text = item.description
+        holder.itemView.setOnClickListener{
+            listener.onItemClick(item)
+        }
     }
 
     fun updateItems(items: MutableList<City>) {
@@ -43,5 +48,9 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
         var image: ImageView = itemView.findViewById(R.id.item_image)
         var name: TextView = itemView.findViewById(R.id.item_name)
         var description: TextView = itemView.findViewById(R.id.item_description)
+    }
+
+    interface Listener{
+        fun onItemClick(item: City)
     }
 }

@@ -19,4 +19,36 @@
         <item name="android:layout_weight">1</item>
     </style>
 
+    <style name="title">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/text_size_sp_24</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="title_data">
+        <item name="android:textSize">@dimen/text_size_sp_10</item>
+        <item name="android:textColor">@color/colorGrey</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="data">
+        <item name="android:textSize">@dimen/text_size_sp_10</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="full_description">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_size_sp_18</item>
+        <item name="android:textStyle">italic</item>
+    </style>
 </resources>
