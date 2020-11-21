@@ -12,7 +12,7 @@ import com.example.firsthomework.R
 
 class MainAdapter(private var listener: Listener) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
-    var array = mutableListOf<City>()
+    private var array = mutableListOf<City>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)

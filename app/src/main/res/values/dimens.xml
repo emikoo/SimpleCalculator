@@ -13,4 +13,5 @@
     <dimen name="view_150_dp">150dp</dimen>
     <dimen name="margin_dp_8">8dp</dimen>
     <dimen name="padding_8_dp">8dp</dimen>
+    <dimen name="margin_dp_24">24dp</dimen>
 </resources>
