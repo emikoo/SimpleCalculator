@@ -10,9 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.detail_city.CityActivity"></activity>
+        <activity android:name=".ui.detail_news.DetailNewsActivity"></activity>
         <activity
-            android:name=".ui.city.MainActivity"
+            android:name=".ui.news.MainActivity"
             tools:ignore="MissingClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

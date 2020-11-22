@@ -14,4 +14,10 @@
     <dimen name="margin_dp_8">8dp</dimen>
     <dimen name="padding_8_dp">8dp</dimen>
     <dimen name="margin_dp_24">24dp</dimen>
+    <dimen name="view_dp_400">400dp</dimen>
+    <dimen name="view_dp_79">79dp</dimen>
+    <dimen name="padding_dp_16">16dp</dimen>
+    <dimen name="radius_dp_16">16dp</dimen>
+    <dimen name="text_size_sp_16">16sp</dimen>
+    <dimen name="text_size_sp_14">14sp</dimen>
 </resources>
