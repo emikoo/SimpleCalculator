@@ -50,5 +50,22 @@
         <item name="android:padding">@dimen/padding_dp_16</item>
     </style>
 
+    <style name="dialogTitle" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:padding">@dimen/padding_8_dp</item>
+        <item name="android:textSize">@dimen/text_size_sp_18</item>
+        <item name="fontFamily">@font/roboto_condensed</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
+    <style name="dialogButton">
+        <item name="android:layout_width">@dimen/view_150_dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/button</item>
+        <item name="android:textSize">@dimen/text_size_sp_18</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
 </resources>

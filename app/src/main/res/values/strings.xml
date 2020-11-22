@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">FirstHomeWork</string>
-    <string name="title">Крупнейшие\nМегаполисы\nЯпонии</string>
-    <string name="go">GO</string>
+    <string name="string">title</string>
+    <string name="title_dialog">Вы уверены, что хотите удалить?</string>
 </resources>

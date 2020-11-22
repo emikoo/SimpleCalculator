@@ -18,15 +18,16 @@ fun showToast(context: Context, message: String){
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }
 
-fun showSnackBar(view: View, message: String, context: Context, clazz: Class<*>, item: News) {
-    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).setAction(R.string.go){
-        startIntent(context, clazz, item)
+fun showSnackBar(
+    view: View,
+    message: String,
+    actionTitle: String,
+    action: () -> Unit,
+    context: Context
+) {
+    Snackbar.make(view, message, Snackbar.LENGTH_LONG).setAction(actionTitle){
+        action()
     }.setActionTextColor(getColor(context, R.color.colorYellow)).show()
 }
 
-fun startIntent(context: Context, clazz: Class<*>, item: News){
-    val intent = Intent(context, clazz)
-    intent.putExtra("news", item)
-    context.startActivity(intent)
-}
 

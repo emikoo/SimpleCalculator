@@ -32,11 +32,26 @@ class NewsAdapter(private var listener: Listener): RecyclerView.Adapter<NewsAdap
         holder.itemView.setOnClickListener{
             listener.onItemClick(item)
         }
+        holder.itemView.setOnLongClickListener {
+            listener.onLongItemClick(item, position)
+            true
+        }
     }
 
     fun updateItem(item: MutableList<News>){
         newsArray = item
         notifyDataSetChanged()
+    }
+
+    fun deleteItem(position: Int){
+        newsArray.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, itemCount)
+    }
+
+    fun restoreItem(item: News, position: Int){
+        newsArray.add(position, item)
+        notifyItemRangeChanged(position, itemCount)
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -53,5 +68,6 @@ class NewsAdapter(private var listener: Listener): RecyclerView.Adapter<NewsAdap
 
     interface Listener {
         fun onItemClick(item: News)
+        fun onLongItemClick(item: News, position: Int)
     }
 }

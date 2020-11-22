@@ -15,7 +15,7 @@ class DetailNewsActivity : AppCompatActivity() {
     }
 
     private fun getDataFromMain(){
-        val item = intent.getSerializableExtra("news") as News
+        val item = intent?.getSerializableExtra("news") as News
         setDataToViews(item)
     }
 
