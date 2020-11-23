@@ -60,17 +60,23 @@ class MainActivity : AppCompatActivity(), NewsAdapter.Listener {
     }
 
     private fun deleteAlertDialog(){
-        val alert = AlertDialog.Builder(this)
-        val view: View = layoutInflater.inflate(R.layout.custom_dialog, null)
-        alert.setView(view)
-            .setCustomTitle(title_dialog)
-            .setCancelable(false)
-        alert.setPositiveButton("ДА"){ dialog, which ->
+        val alert = AlertDialog.Builder(this, R.style.NewsDialogStyle)
+        val inflater = layoutInflater.inflate(R.layout.custom_dialog, null)
+        alert.setView(inflater)
+        var title: TextView = inflater.findViewById(R.id.title_dialog)
+        var positive: Button = inflater.findViewById(R.id.positive_button)
+        var negative: Button = inflater.findViewById(R.id.negative_button)
+        var dialog = alert.create()
+        title.setText(R.string.title_dialog)
+        positive.text = "Удалить"
+        negative.text = "Отменить"
+        positive.setOnClickListener {
             deleteItem()
-        }
-        alert.setNegativeButton("НЕТ"){ dialog, which ->
             dialog.dismiss()
         }
-        alert.show()
+        negative.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 }
