@@ -20,4 +20,5 @@
     <dimen name="radius_dp_16">16dp</dimen>
     <dimen name="text_size_sp_16">16sp</dimen>
     <dimen name="text_size_sp_14">14sp</dimen>
+    <dimen name="margin_dp_16">16dp</dimen>
 </resources>

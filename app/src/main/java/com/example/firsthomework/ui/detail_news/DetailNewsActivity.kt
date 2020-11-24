@@ -2,9 +2,11 @@ package com.example.firsthomework.ui.detail_news
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.example.firsthomework.R
 import com.example.firsthomework.ui.News
 import kotlinx.android.synthetic.main.activity_detail_news.*
+import kotlinx.android.synthetic.main.item_news.*
 
 class DetailNewsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +22,10 @@ class DetailNewsActivity : AppCompatActivity() {
     }
 
     private fun setDataToViews(data: News){
-        full_image.setImageResource(data.image)
+        Glide
+            .with(image.context)
+            .load(data.image)
+            .into(image)
         full_title.text = data.title
         full_description.text = data.fullNews
     }

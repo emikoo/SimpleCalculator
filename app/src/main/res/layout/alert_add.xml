@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_8_dp">
+
+    <TextView
+        android:id="@+id/header"
+        style="@style/dialogTitle"
+        android:text="@string/add_news"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Добавление новости" />
+
+    <LinearLayout
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_dp_8"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_dp_8"
+            android:src="@drawable/ic_baseline_add_a_photo_24"/>
+
+        <EditText
+            android:id="@+id/set_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:ellipsize="end"
+            android:layout_margin="@dimen/margin_dp_8"
+            android:hint="Введите ссылку фотографии"
+            android:background="@null"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/title_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/set_title"
+        android:layout_margin="@dimen/margin_dp_8"
+        android:background="@null"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@id/image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/subtitle_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/set_subtitle"
+        android:layout_margin="@dimen/margin_dp_8"
+        android:background="@null"
+        app:layout_constraintTop_toBottomOf="@id/title_edit_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/add_positive_button"
+        style="@style/dialogButton"
+        android:text="Добавить"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/subtitle_edit_text" />
+
+    <Button
+        android:id="@+id/add_negative_button"
+        style="@style/dialogButton"
+        android:layout_margin="@dimen/margin_dp_8"
+        app:layout_constraintEnd_toStartOf="@id/add_positive_button"
+        app:layout_constraintTop_toTopOf="@id/add_positive_button"
+        app:layout_constraintBottom_toBottomOf="@id/add_positive_button"
+        android:text="Отменить" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

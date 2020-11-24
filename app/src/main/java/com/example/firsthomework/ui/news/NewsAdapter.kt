@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.firsthomework.R
 import com.example.firsthomework.newsArray
 import com.example.firsthomework.ui.News
@@ -49,6 +50,11 @@ class NewsAdapter(private var listener: Listener): RecyclerView.Adapter<NewsAdap
         notifyItemRangeChanged(position, itemCount)
     }
 
+    fun addItem(item: News){
+        newsArray.add(item)
+        notifyItemInserted(newsArray.lastIndex)
+    }
+
     fun restoreItem(item: News, position: Int){
         newsArray.add(position, item)
         notifyItemRangeChanged(position, itemCount)
@@ -60,7 +66,10 @@ class NewsAdapter(private var listener: Listener): RecyclerView.Adapter<NewsAdap
         private var subtitle: TextView = itemView.findViewById(R.id.subtitle)
 
         fun bind(item: News){
-            image.setImageResource(item.image)
+            Glide
+                .with(image.context)
+                .load(item.image)
+                .into(image)
             name.text = item.title
             subtitle.text = item.subtitle
         }

@@ -18,7 +18,7 @@ fun showToast(context: Context, message: String){
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }
 
-fun showSnackBar(
+fun showActionSnackbar(
     view: View,
     message: String,
     actionTitle: String,
@@ -28,6 +28,10 @@ fun showSnackBar(
     Snackbar.make(view, message, Snackbar.LENGTH_LONG).setAction(actionTitle){
         action()
     }.setActionTextColor(getColor(context, R.color.colorYellow)).show()
+}
+
+fun showSnackbar(view: View, message: String){
+    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
 }
 
 

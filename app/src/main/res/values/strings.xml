@@ -2,4 +2,7 @@
     <string name="app_name">FirstHomeWork</string>
     <string name="string">title</string>
     <string name="title_dialog">Вы уверены, что хотите удалить?</string>
+    <string name="set_title">Введите заголовок</string>
+    <string name="set_subtitle">Введите описание</string>
+    <string name="add_news">Добавление новости</string>
 </resources>

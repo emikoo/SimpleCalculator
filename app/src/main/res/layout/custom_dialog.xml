@@ -9,6 +9,7 @@
     <TextView
         android:id="@+id/title_dialog"
         style="@style/dialogTitle"
+        android:text="@string/title_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,6 +20,7 @@
     <Button
         android:id="@+id/positive_button"
         style="@style/dialogButton"
+        android:text="Удалить"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_dialog"
         tools:text="Удалить" />
@@ -27,6 +29,7 @@
         android:id="@+id/negative_button"
         style="@style/dialogButton"
         android:layout_margin="@dimen/margin_dp_8"
+        android:text="Отменить"
         app:layout_constraintEnd_toStartOf="@id/positive_button"
         app:layout_constraintTop_toTopOf="@id/positive_button"
         app:layout_constraintBottom_toBottomOf="@id/positive_button"
