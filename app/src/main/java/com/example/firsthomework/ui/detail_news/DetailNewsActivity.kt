@@ -23,9 +23,9 @@ class DetailNewsActivity : AppCompatActivity() {
 
     private fun setDataToViews(data: News){
         Glide
-            .with(image.context)
+            .with(full_image.context)
             .load(data.image)
-            .into(image)
+            .into(full_image)
         full_title.text = data.title
         full_description.text = data.fullNews
     }

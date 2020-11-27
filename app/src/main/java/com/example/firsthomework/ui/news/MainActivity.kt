@@ -36,13 +36,14 @@ class MainActivity : AppCompatActivity(), NewsAdapter.Listener {
         adapter.updateItem(newsArray)
     }
 
+    private var news: News? = null
     override fun onItemClick(item: News) {
+        news = item
         val intent = Intent(this, DetailNewsActivity::class.java)
-        intent.putExtra("news", item)
+        intent.putExtra("news", news)
         startActivity(intent)
     }
 
-    private var news: News? = null
     var position: Int? = null
     override fun onLongItemClick(item: News, position: Int) {
         news = item
