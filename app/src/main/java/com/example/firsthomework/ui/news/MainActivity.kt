@@ -4,16 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.example.firsthomework.R
-import com.example.firsthomework.newsArray
-import com.example.firsthomework.showActionSnackbar
-import com.example.firsthomework.showSnackbar
+import com.example.firsthomework.ui.healper.newsArray
+import com.example.firsthomework.ui.healper.showActionSnackbar
 import com.example.firsthomework.ui.News
 import com.example.firsthomework.ui.detail_news.DetailNewsActivity
+import com.example.firsthomework.ui.healper.showSingleAlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -48,86 +48,68 @@ class MainActivity : AppCompatActivity(), NewsAdapter.Listener {
     override fun onLongItemClick(item: News, position: Int) {
         news = item
         this.position = position
-        showAlertDialog(R.layout.custom_dialog, R.id.positive_button, R.id.negative_button, false)
+        showSingleAlertDialog(this::deleteItem, this, "Вы уверены что хотите удалить новость",
+            "Удалить", "Отменить")
     }
 
     private fun addAction() {
         add_fab.setOnClickListener {
-            showAlertDialog(
-                R.layout.alert_add,
-                R.id.add_positive_button,
-                R.id.add_negative_button,
-                true
-            )
+            showAddAlertDialog()
         }
     }
 
-    private fun showAlertDialog(view: Int, positive: Int, negative: Int, boolean: Boolean) {
+    private fun showAddAlertDialog() {
         val alert = AlertDialog.Builder(this, R.style.NewsDialogStyle)
-        val inflater = layoutInflater.inflate(view, null)
+
+        val inflater = layoutInflater.inflate(R.layout.alert_add, null)
         alert.setView(inflater)
-            .setCancelable(false)
-        val positiveButton: Button = inflater.findViewById(positive)
-        val negativeButton: Button = inflater.findViewById(negative)
+        val image = inflater.findViewById<EditText>(R.id.set_image)
+        val title = inflater.findViewById<EditText>(R.id.title_edit_text)
+        val subtitle = inflater.findViewById<EditText>(R.id.subtitle_edit_text)
+        val positive = inflater.findViewById<Button>(R.id.add_positive_button)
+        val negative = inflater.findViewById<Button>(R.id.add_negative_button)
         val dialog = alert.create()
-        positiveButton.setOnClickListener {
-            if (boolean) {
-                val imageURL: EditText = inflater.findViewById(R.id.set_image)
-                val title: EditText = inflater.findViewById(R.id.title_edit_text)
-                val subtitle: EditText = inflater.findViewById(R.id.subtitle_edit_text)
-                if (title.text.isEmpty() && subtitle.text.isEmpty() && imageURL.text.isEmpty()) {
-                    title.error = "Добавьте заголовок"
-                    subtitle.error = "Добавьте описание"
-                    imageURL.error = "Добавьте url картинки"
-                    showSnackbar(news_list, "Добавьте картинку, заголовок и описание")
-                    return@setOnClickListener
-                }
-                if (title.text.isEmpty() && imageURL.text.isEmpty()) {
-                    title.error = "Добавьте заголовок"
-                    imageURL.error = "Добавьте url картинки"
-                    showSnackbar(news_list, "Добавьте заголовок и url картинки")
-                    return@setOnClickListener
-                }
-                if (title.text.isEmpty() && subtitle.text.isEmpty()) {
-                    title.error = "Добавьте заголовок"
-                    subtitle.error = "Добавьте описание"
-                    showSnackbar(news_list, "Добавьте заголовок и описание")
-                    return@setOnClickListener
-                }
-                if (imageURL.text.isEmpty()){
-                    title.error = "Добавьте url картинки"
-                    showSnackbar(news_list, "Нельзя загрузить картинку без ссылки")
-                    return@setOnClickListener
-                }
-                if (title.text.isEmpty()) {
-                    title.error = "Добавьте заголовок"
-                    showSnackbar(news_list, "Нельзя добавить пустой заговок")
-                    return@setOnClickListener
-                }
-                if (subtitle.text.isEmpty()) {
-                    subtitle.error = "Добавьте описание"
-                    showSnackbar(news_list, "Нельзя добавить пустое описание")
-                    return@setOnClickListener
-                }
-                addItem(imageURL.text.toString() ,title.text.toString(), subtitle.text.toString())
-            }
-            if (!boolean) deleteItem()
-            dialog.dismiss()
+        positive.setOnClickListener {
+            addItem(image, title, subtitle, dialog)
         }
-        negativeButton.setOnClickListener {
+        negative.setOnClickListener {
             dialog.dismiss()
         }
         dialog.show()
     }
 
     private fun deleteItem() {
+        showActionSnackbar(
+            news_list,
+            "Новость удалена",
+            "Востановить",
+            this::restoreNewsItem,
+            this
+        )
         adapter.deleteItem(position!!)
-        showActionSnackbar(news_list, "Новость удалена", "Востановить", this::restoreNewsItem, this)
     }
 
-    private fun addItem(image: String, title: String, subtitle: String) {
-        val news = News(image , title, subtitle, "")
+    private fun addItem(imageEditText: EditText, titleEditText: EditText,
+                        subtitleEditText: EditText, dialog: AlertDialog) {
+        var error = 0
+        if (isEmptyInputData(imageEditText, "Добавьте картинку")) error += 1
+        if (isEmptyInputData(titleEditText, "Добавьте заголовок")) error += 1
+        if (isEmptyInputData(subtitleEditText, "Добавьте описание")) error += 1
+
+        if (error > 0) return
+
+        val news = News(imageEditText.text.toString() , titleEditText.text.toString(),
+            subtitleEditText.text.toString(), "")
         adapter.addItem(news)
+        dialog.dismiss()
+    }
+
+    private fun isEmptyInputData(view: EditText, message: String): Boolean {
+        if (view.text.isNullOrEmpty()){
+            view.error = message
+            return true
+        }
+        return false
     }
 
     private fun restoreNewsItem() {

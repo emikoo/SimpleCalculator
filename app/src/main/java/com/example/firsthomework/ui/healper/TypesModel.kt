@@ -1,4 +1,4 @@
-package com.example.firsthomework
+package com.example.firsthomework.ui.healper
 
 import com.example.firsthomework.ui.News
 

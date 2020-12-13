@@ -1,7 +1,6 @@
 package com.example.firsthomework.ui.news
 
 import android.view.LayoutInflater
-import android.view.OrientationEventListener
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -9,9 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firsthomework.R
-import com.example.firsthomework.newsArray
 import com.example.firsthomework.ui.News
-import kotlinx.android.synthetic.main.activity_main.view.*
 
 class NewsAdapter(private var listener: Listener): RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
