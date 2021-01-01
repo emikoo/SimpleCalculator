@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.detail_news.DetailNewsActivity"></activity>
         <activity
-            android:name=".ui.news.MainActivity"
+            android:name=".ui.contacts.MainActivity"
             tools:ignore="MissingClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

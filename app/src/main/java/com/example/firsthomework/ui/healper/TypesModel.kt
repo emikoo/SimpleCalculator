@@ -1,10 +1,8 @@
 package com.example.firsthomework.ui.healper
 
-import com.example.firsthomework.ui.News
-
-var newsArray = mutableListOf<News>().apply {
+var newsArray = mutableListOf<Contact>().apply {
     add(
-        News(
+        Contact(
             "https://cdn24.img.ria.ru/images/155537/80/1555378028_0:0:2940:1655_1600x0_80_0_0_696c0159139161f1347f3435e8d65c4f.jpg",
             "Си Цзиньпин предложил создать международный механизм \"кодов здоровья\"",
             "\"Китай предлагает создать международный механизм \"кодов здоровья\" на основе результатов " +
@@ -22,7 +20,7 @@ var newsArray = mutableListOf<News>().apply {
     )
 
     add(
-        News(
+        Contact(
             "https://cdn22.img.ria.ru/images/07e4/09/0f/1577281704_0:0:2776:1562_1600x0_80_0_0_fa3380fd3500fa8957f90a151d4aefe6.jpg",
             "Эрдоган посетовал на плохую солидарность во время пандемии",
             "\"Мир и главным образом развитые страны плохо прошли испытания на солидарность " +
@@ -38,7 +36,7 @@ var newsArray = mutableListOf<News>().apply {
     )
 
     add(
-        News(
+        Contact(
             "https://icdn.lenta.ru/images/2020/11/17/15/20201117155309466/brief_cdab2a4cf66ef1c8b63dd789f461f374.JPG",
             "Обама рассказал о России, Трампе и Путине в своих мемуарах",
             "Он описал слабые стороны российской политики и свои ошибки",
@@ -60,7 +58,7 @@ var newsArray = mutableListOf<News>().apply {
     )
 
     add(
-        News(
+        Contact(
             "https://cdn24.img.ria.ru/images/147503/65/1475036575_0:320:3072:2048_1600x0_80_0_0_612a58133cde5d5ddbad0be8882b64a4.jpg",
             "Белорусская семья два месяца пряталась в лесу от \"чипирования\"",
             " Семья с детьми в Белоруссии более двух месяцев пряталась в Налибокской пуще от " +
@@ -78,7 +76,7 @@ var newsArray = mutableListOf<News>().apply {
     )
 
     add(
-        News(
+        Contact(
             "https://cdn24.img.ria.ru/images/150829/26/1508292693_0:83:3030:1787_1600x0_80_0_0_2b999c4396bdc674d1388c208e83a0f4.jpg",
             "В Киеве протестующие зажгли файеры у больницы, где лечится Зеленский",
             "Участники автопробега \"От Майдана к Феофании\" зажгли файеры у больницы, " +

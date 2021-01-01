@@ -5,24 +5,15 @@
     android:layout_height="match_parent"
     android:layout_margin="@dimen/activity_dp_16">
 
-    <ImageView
-        android:id="@+id/icon_logo"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/view_dp_79"
-        android:src="@mipmap/ria_news"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/news_list"
+        android:id="@+id/contact_list"
         android:layout_width="match_parent"
         android:layout_height="@dimen/view_dp_0"
         android:layout_margin="@dimen/margin_dp_8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/icon_logo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_fab"
