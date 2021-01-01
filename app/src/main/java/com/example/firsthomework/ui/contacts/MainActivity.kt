@@ -1,25 +1,27 @@
 package com.example.firsthomework.ui.contacts
 
-import android.graphics.Canvas
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firsthomework.R
+import com.example.firsthomework.ui.detail_contact.DetailContactActivity
 import com.example.firsthomework.ui.healper.Contact
+import com.example.firsthomework.ui.healper.ItemSimpleTouch
 import com.example.firsthomework.ui.healper.contactArray
+import com.example.firsthomework.ui.healper.showActionSnackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
-    //+При нажатии на фаб баттон сделать добавление пользователя, вместе с проверками на поля (image, firstName, lastName, email)
-    //+ *Задание на поиск решения* - Сделать закругление для картинки
+class MainActivity : AppCompatActivity(), ContactAdapter.OnItemClick {
+    //+1. Исправить удаление элемента
+    //+2. Вызвать отображение  SnackBar с возможностью востановить элемент
+    //+3. Реализовать востановление элемента
 
     lateinit var adapter: ContactAdapter
 
@@ -31,54 +33,52 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupAdapter() {
-        adapter = ContactAdapter()
+        adapter = ContactAdapter(this)
         contact_list.adapter = adapter
         contact_list.layoutManager = LinearLayoutManager(this)
         adapter.updateItems(contactArray)
 
-        val touchHelper = ItemTouchHelper(
-            object :
-                ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
-                override fun onMove(
-                    recyclerView: RecyclerView,
-                    viewHolder: RecyclerView.ViewHolder,
-                    target: RecyclerView.ViewHolder
-                ): Boolean {
-                    return false
-                }
-
-                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                    val position = viewHolder.adapterPosition
-                    adapter.array.removeAt(position)
-                    adapter.notifyItemRemoved(position)
-                }
-
+        val swipeHandler = object : ItemSimpleTouch(this) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val item = contactArray[position]
+                val name = item.firstName
+                adapter.deleteItem(position)
+                adapter.notifyDataSetChanged()
+                //Вызвать отображение  SnackBar с возможностью востановить элемент
+                showActionSnackbar(contact_list, "Вы удалили $name", "Востановить",
+                    {adapter.restoreItem(item,position)}, this@MainActivity)
             }
-        )
-        touchHelper.attachToRecyclerView(contact_list)
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        itemTouchHelper.attachToRecyclerView(contact_list)
     }
 
     private fun addAction(){
         add_fab.setOnClickListener {
-            val alert = AlertDialog.Builder(this, R.style.NewsDialogStyle)
-
-            val inflater = layoutInflater.inflate(R.layout.alert_add, null)
-            alert.setView(inflater)
-            val image: EditText = inflater.findViewById(R.id.set_image)
-            val firstName: EditText = inflater.findViewById(R.id.first_name_edit_text)
-            val lastName: EditText = inflater.findViewById(R.id.last_name_edit_text)
-            val email: EditText = inflater.findViewById(R.id.email_edit_text)
-            val positiveButton: Button = inflater.findViewById(R.id.add_positive_button)
-            val negativeButton: Button = inflater.findViewById(R.id.add_negative_button)
-            val dialog = alert.create()
-            negativeButton.setOnClickListener {
-                dialog.dismiss()
-            }
-            positiveButton.setOnClickListener {
-                addItem(image, firstName, lastName, email, dialog)
-            }
-            dialog.show()
+            showAddingMemberActionDialog()
         }
+    }
+
+    fun showAddingMemberActionDialog(){
+        val alert = AlertDialog.Builder(this, R.style.NewsDialogStyle)
+
+        val inflater = layoutInflater.inflate(R.layout.alert_add, null)
+        alert.setView(inflater)
+        val image: EditText = inflater.findViewById(R.id.set_image)
+        val firstName: EditText = inflater.findViewById(R.id.first_name_edit_text)
+        val lastName: EditText = inflater.findViewById(R.id.last_name_edit_text)
+        val email: EditText = inflater.findViewById(R.id.email_edit_text)
+        val positiveButton: Button = inflater.findViewById(R.id.add_positive_button)
+        val negativeButton: Button = inflater.findViewById(R.id.add_negative_button)
+        val dialog = alert.create()
+        negativeButton.setOnClickListener {
+            dialog.dismiss()
+        }
+        positiveButton.setOnClickListener {
+            addItem(image, firstName, lastName, email, dialog)
+        }
+        dialog.show()
     }
 
     private fun addItem(imageEditText: EditText, firstNameEditText: EditText,
@@ -103,5 +103,10 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return false
+    }
+
+    override fun onItemClick(item: Contact) {
+        val intent = Intent(this, DetailContactActivity::class.java)
+        startActivity(intent)
     }
 }
