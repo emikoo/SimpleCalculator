@@ -6,6 +6,7 @@ import androidx.core.content.edit
 
 const val NAME = "name"
 const val SURNAME = "surname"
+const val IS_PERMITTED = "permission"
 
 class SharedPreference(context: Context){
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("authorization_application", Context.MODE_PRIVATE)
@@ -27,6 +28,16 @@ class SharedPreference(context: Context){
         set(value) {
             sharedPreferences.edit {
                 putString(SURNAME, value)
+            }
+        }
+
+    var isPermitted: Boolean
+        get() {
+            return sharedPreferences.getBoolean(IS_PERMITTED, false)
+        }
+        set(value) {
+            sharedPreferences.edit {
+                putBoolean(IS_PERMITTED, value)
             }
         }
 

@@ -7,8 +7,11 @@ import androidx.core.content.ContextCompat.getColor
 import com.example.firsthomework.R
 import com.google.android.material.snackbar.Snackbar
 
+var toast: Toast? = null
 fun showToast(context: Context, message: String){
-    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    if (toast != null) toast?.cancel()
+    toast = Toast.makeText(context, message, Toast.LENGTH_LONG)
+    toast?.show()
 }
 
 fun showActionSnackbar(

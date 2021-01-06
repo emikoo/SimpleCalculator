@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firsthomework.R
 import com.example.firsthomework.ui.healper.Contact
+import com.example.firsthomework.ui.healper.contactArray
 
 class ContactAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
