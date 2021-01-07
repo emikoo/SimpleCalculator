@@ -30,13 +30,13 @@ class ContactFragment : Fragment(), ContactAdapter.OnItemClick, OnAddEditListene
         super.onStart()
         setupAdapter()
         addAction()
+        onToolbarClicked()
     }
 
     private fun setupAdapter(){
         adapter = ContactAdapter(this)
         recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(requireContext())
-        adapter.updateItems(contactArray)
 
         val swipeHandler = object : ItemSimpleTouch(requireContext()){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -44,7 +44,7 @@ class ContactFragment : Fragment(), ContactAdapter.OnItemClick, OnAddEditListene
                 val item = contactArray[position]
                 adapter.deleteItem(position)
                 adapter.notifyDataSetChanged()
-                showActionSnackbar(recycler_view,
+                showActionSnackbar(fab,
                     "Вы удалили ${item.firstName} ${item.lastName}",
                     "Востановить",
                     {adapter.restoreItem(item,position)},
@@ -77,15 +77,13 @@ class ContactFragment : Fragment(), ContactAdapter.OnItemClick, OnAddEditListene
         }
     }
 
-    fun checkIsEmptyField(editText: EditText): Boolean {
-        if (editText.text.toString().isEmpty()) {
-            editText.error = "Обязательное поле"
-            return true
-        }
-        return false
-    }
-
     override fun addEditingDialog(type: Int, contact: Contact) {
         adapter.addItem(contact)
+    }
+
+    private fun onToolbarClicked(){
+        close_toolbar.setNavigationOnClickListener {
+            activity?.finish()
+        }
     }
 }

@@ -6,9 +6,14 @@
         android:id="@+id/left_button"
         android:icon="@drawable/ic_left"
         android:title="@string/left"
-        app:showAsAction="ifRoom"
-        >
+        app:showAsAction="ifRoom">
+    </item>
 
+    <item
+        android:id="@+id/close_button"
+        android:icon="@string/close"
+        android:title="Вы"
+        app:showAsAction="ifRoom">
     </item>
 
 </menu>

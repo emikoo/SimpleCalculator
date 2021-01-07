@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_alert_dialog"
     android:padding="@dimen/padding_8_dp">
 
     <TextView
@@ -15,44 +16,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/image"
+    <EditText
+        android:id="@+id/set_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_dp_8"
-        android:orientation="horizontal"
+        android:layout_margin="@dimen/margin_dp_16"
+        android:background="@null"
+        android:ellipsize="end"
+        android:hint="@string/set_url_image"
+        android:lines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header">
-
-        <EditText
-            android:id="@+id/set_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_dp_8"
-            android:background="@null"
-            android:ellipsize="end"
-            android:hint="Введите ссылку фотографии"
-            android:lines="1" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/header" />
 
     <EditText
         android:id="@+id/first_name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_dp_8"
+        android:layout_margin="@dimen/margin_dp_16"
         android:background="@null"
         android:hint="@string/set_first_name"
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image" />
+        app:layout_constraintTop_toBottomOf="@id/set_image" />
 
     <EditText
         android:id="@+id/last_name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_dp_8"
+        android:layout_margin="@dimen/margin_dp_16"
         android:background="@null"
         android:hint="@string/set_last_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +56,7 @@
         android:id="@+id/email_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_dp_8"
+        android:layout_margin="@dimen/margin_dp_16"
         android:background="@null"
         android:hint="@string/set_email"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,15 +65,15 @@
 
     <Button
         android:id="@+id/add_positive_button"
-        style="@style/dialogButton"
+        style="@style/positiveButton"
         android:text="Добавить"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/email_edit_text" />
 
     <Button
         android:id="@+id/add_negative_button"
-        style="@style/dialogButton"
-        android:layout_margin="@dimen/margin_dp_8"
+        style="@style/negativeButton"
+        android:layout_margin="@dimen/margin_dp_16"
         android:text="Отменить"
         app:layout_constraintBottom_toBottomOf="@id/add_positive_button"
         app:layout_constraintEnd_toStartOf="@id/add_positive_button"

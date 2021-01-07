@@ -13,7 +13,6 @@ import com.example.firsthomework.ui.healper.contactArray
 
 class ContactAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
-    var array = mutableListOf<Contact>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_contacts, parent, false)
@@ -21,35 +20,30 @@ class ContactAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<C
     }
 
     override fun getItemCount(): Int {
-        return array.count()
+        return contactArray.count()
     }
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
-        val item = array[position]
+        val item = contactArray[position]
         holder.bind(item)
         holder.itemView.setOnClickListener{
             listener.onItemClick(item)
         }
     }
 
-    fun updateItems(items: MutableList<Contact>) {
-        array = items
-        notifyDataSetChanged()
-    }
-
     fun addItem(item: Contact) {
-        array.add(item)
-        notifyItemInserted(array.lastIndex)
+        contactArray.add(item)
+        notifyItemInserted(contactArray.lastIndex)
     }
 
     fun deleteItem(position: Int){
-        array.removeAt(position)
+        contactArray.removeAt(position)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, itemCount)
     }
 
     fun restoreItem(item: Contact, position: Int){
-        array.add(position, item)
+        contactArray.add(position, item)
         notifyItemRangeChanged(position, itemCount)
     }
 

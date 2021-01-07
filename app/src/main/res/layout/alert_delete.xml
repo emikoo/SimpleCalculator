@@ -18,14 +18,14 @@
 
     <Button
         android:id="@+id/positive_button"
-        style="@style/dialogButton"
+        style="@style/positiveButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_dialog"
         tools:text="Удалить" />
 
     <Button
         android:id="@+id/negative_button"
-        style="@style/dialogButton"
+        style="@style/negativeButton"
         android:layout_margin="@dimen/margin_dp_8"
         app:layout_constraintEnd_toStartOf="@id/positive_button"
         app:layout_constraintTop_toTopOf="@id/positive_button"

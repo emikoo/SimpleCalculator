@@ -11,7 +11,9 @@ import com.example.firsthomework.R
 import com.example.firsthomework.ui.healper.Contact
 import com.example.firsthomework.ui.healper.SharedPreference
 import com.example.firsthomework.ui.healper.showToast
+import kotlinx.android.synthetic.main.fragment_contact.*
 import kotlinx.android.synthetic.main.fragment_contact_detail.*
+import kotlinx.android.synthetic.main.fragment_contact_detail.close_toolbar
 
 class ContactDetailFragment : Fragment() {
     private lateinit var contact: Contact
@@ -32,9 +34,8 @@ class ContactDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toolbar.setNavigationOnClickListener {
-            activity?.onBackPressed()
-        }
+
+        onToolbarClicked()
     }
 
     private fun setupViews(){
@@ -46,5 +47,14 @@ class ContactDetailFragment : Fragment() {
         firstName.text = contact.firstName
         lastName.text = contact.lastName
         email.text = contact.email
+    }
+
+    private fun onToolbarClicked(){
+        close_toolbar.setNavigationOnClickListener {
+            activity?.finish()
+        }
+        left_toolbar.setNavigationOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 }
