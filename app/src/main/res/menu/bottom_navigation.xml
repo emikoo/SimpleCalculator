@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/contact"
-        android:icon="@drawable/ic_contact"
-        android:title="@string/contact">
+    <item android:id="@+id/cat"
+        android:icon="@drawable/ic_cat"
+        android:title="@string/cats">
     </item>
 
-    <item android:id="@+id/profile"
-        android:icon="@drawable/ic_profile"
-        android:title="@string/profile">
+    <item android:id="@+id/dog"
+        android:icon="@drawable/ic_dog"
+        android:title="@string/dogs">
     </item>
 </menu>

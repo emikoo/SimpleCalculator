@@ -1,4 +1,4 @@
-package com.example.firsthomework.ui.healper
+package com.example.firsthomework.kotlin.healper
 
 import android.content.Context
 import android.graphics.*

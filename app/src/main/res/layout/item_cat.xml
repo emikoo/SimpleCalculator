@@ -7,48 +7,47 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_margin="@dimen/margin_dp_16"
-        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_baseline_person_24" />
 
     <TextView
-        android:id="@+id/firstName"
-        style="@style/title"
+        android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_dp_16"
-        app:layout_constraintBottom_toTopOf="@id/lastName"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/margin_dp_16"
+        app:layout_constraintEnd_toStartOf="@id/like"
         app:layout_constraintStart_toEndOf="@id/image"
         app:layout_constraintTop_toTopOf="@id/image"
-        tools:text="YOUR NAME" />
+        tools:text="Title" />
 
     <TextView
-        android:id="@+id/lastName"
-        style="@style/title"
+        android:id="@+id/subtitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_dp_16"
-        app:layout_constraintBottom_toTopOf="@id/email"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin_dp_8"
+        android:layout_marginEnd="@dimen/margin_dp_16"
+        app:layout_constraintEnd_toStartOf="@id/like"
         app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintTop_toBottomOf="@id/firstName"
-        tools:text="YOUR SURNAME" />
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:text="Subtitle" />
 
-    <TextView
-        android:id="@+id/email"
-        style="@style/subtitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_dp_16"
+    <ImageButton
+        android:id="@+id/like"
+        android:layout_width="@dimen/margin_dp_24"
+        android:layout_height="@dimen/margin_dp_24"
+        android:layout_margin="@dimen/margin_dp_16"
+        android:background="@null"
+        android:src="@drawable/ic_unliked"
         app:layout_constraintBottom_toBottomOf="@id/image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintTop_toBottomOf="@id/lastName"
-        tools:text="YOUR EMAIL" />
+        app:layout_constraintTop_toTopOf="@id/image" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
