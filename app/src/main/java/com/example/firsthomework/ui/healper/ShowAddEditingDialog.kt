@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.EditText
 import com.example.firsthomework.R
+import com.example.firsthomework.ui.models.Contact
 import kotlinx.android.synthetic.main.alert_add.*
 
 class ShowAddEditingDialog(context: Context, var headerTitle: String,
@@ -41,7 +42,8 @@ class ShowAddEditingDialog(context: Context, var headerTitle: String,
                 set_image.text.toString(),
                 first_name_edit_text.text.toString(),
                 last_name_edit_text.text.toString(),
-                email_edit_text.text.toString())
+                email_edit_text.text.toString()
+            )
             listener.addEditingDialog(type, contact)
             dismiss()
         }

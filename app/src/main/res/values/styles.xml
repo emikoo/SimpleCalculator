@@ -49,9 +49,6 @@
 
     <style name="dialogTitle" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
         <item name="android:textColor">@color/colorBlack</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:padding">@dimen/padding_8_dp</item>
         <item name="android:textSize">@dimen/text_size_sp_24</item>
         <item name="fontFamily">@font/roboto_condensed</item>
         <item name="android:textStyle">bold</item>

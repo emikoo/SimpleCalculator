@@ -1,5 +1,7 @@
 package com.example.firsthomework.ui.healper
 
+import com.example.firsthomework.ui.models.Contact
+
 var newsArray = mutableListOf<Contact>().apply {
     add(
         Contact(
