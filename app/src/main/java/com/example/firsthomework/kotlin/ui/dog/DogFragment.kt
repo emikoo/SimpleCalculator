@@ -26,8 +26,8 @@ class DogFragment : Fragment(), DogAdapter.OnItemClick {
         return inflater.inflate(R.layout.fragment_dog, container, false)
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupAdapter()
     }
 
