@@ -5,6 +5,11 @@
         android:title="@string/pets">
     </item>
 
+    <item android:id="@+id/favorites"
+        android:icon="@drawable/ic_heart"
+        android:title="Понравившиеся">
+    </item>
+
     <item android:id="@+id/profile"
         android:icon="@drawable/ic_cat"
         android:title="@string/profile">
