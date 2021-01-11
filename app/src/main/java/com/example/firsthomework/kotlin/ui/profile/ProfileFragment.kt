@@ -12,12 +12,12 @@ import com.bumptech.glide.Glide
 import com.example.firsthomework.R
 import com.example.firsthomework.kotlin.healper.SharedPreference
 import com.example.firsthomework.kotlin.healper.showToast
+import kotlinx.android.synthetic.main.alert_add.view.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
 
     private lateinit var shared: SharedPreference
-    var isEdit: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +41,7 @@ class ProfileFragment : Fragment() {
 
     private fun setupViews() {
         Glide.with(image.context)
-            .load("https://knowhow.pp.ua/wp-content/uploads/2020/05/unnamed-2.jpg")
+            .load(shared.image)
             .into(image)
         name.setText(shared.name)
         surname.setText(shared.surname)
@@ -64,31 +64,25 @@ class ProfileFragment : Fragment() {
         toolbar_edit.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.edit -> {
-                    isEdit = !isEdit
-                    getEditFill(isEdit)
+                    setEditState()
+                    updateEditingViews()
                     true
                 } else -> false
             }
         }
     }
 
-    private fun getEditFill(state: Boolean?) {
-        if (state!!) {
-            name.isEnabled = true
-            surname.isEnabled = true
-            phone_number.isEnabled = true
-        } else {
-            var nameEdited = name.text.toString()
-            var surnameEdited = surname.text.toString()
-            var phoneNumber = phone_number.text.toString()
+    private fun setEditState() {
+        name.isEnabled = !name.isEnabled
+        surname.isEnabled = !surname.isEnabled
+        phone_number.isEnabled = !phone_number.isEnabled
+    }
 
-            shared.name = nameEdited
-            shared.surname = surnameEdited
-            shared.phoneNumber = phoneNumber
-
-            name.isEnabled = false
-            surname.isEnabled = false
-            phone_number.isEnabled = false
+    private fun updateEditingViews() {
+        if (name.isEnabled){
+            shared.name = name.text.toString()
+            shared.surname = surname.text.toString()
+            shared.phoneNumber = phone_number.text.toString()
         }
     }
 }

@@ -8,9 +8,11 @@ const val NAME = "name"
 const val SURNAME = "surname"
 const val PHONE_NUMBER = "phone_number"
 const val IS_PERMITTED = "permission"
+const val IMAGE = "image"
 
-class SharedPreference(context: Context){
-    private val sharedPreferences: SharedPreferences = context.getSharedPreferences("authorization_application", Context.MODE_PRIVATE)
+class SharedPreference(context: Context) {
+    private val sharedPreferences: SharedPreferences =
+        context.getSharedPreferences("authorization_application", Context.MODE_PRIVATE)
 
     var name: String
         get() {
@@ -39,6 +41,19 @@ class SharedPreference(context: Context){
         set(value) {
             sharedPreferences.edit {
                 putString(PHONE_NUMBER, value)
+            }
+        }
+
+    var image: String
+        get() {
+            return sharedPreferences.getStringOrDefault(
+                IMAGE,
+                "https://knowhow.pp.ua/wp-content/uploads/2020/05/unnamed-2.jpg"
+            )
+        }
+        set(value) {
+            sharedPreferences.edit {
+                putString(IMAGE, value)
             }
         }
 
