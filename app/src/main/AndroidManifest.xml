@@ -13,8 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".kotlin.ui.dog_detail.DogDetailActivity"></activity>
-        <activity android:name=".kotlin.ui.cat_detail.CatDetailActivity" />
+        <activity android:name=".kotlin.ui.pet_detail.PetDetailActivity"></activity>
         <activity
             android:name=".kotlin.ui.main.MainActivity"
             tools:ignore="MissingClass">

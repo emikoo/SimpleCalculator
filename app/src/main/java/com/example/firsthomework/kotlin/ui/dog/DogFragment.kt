@@ -10,14 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firsthomework.R
 import com.example.firsthomework.kotlin.models.Pets
 import com.example.firsthomework.kotlin.models.dogArray
-import com.example.firsthomework.kotlin.ui.cat.adapter.DogAdapter
-import com.example.firsthomework.kotlin.ui.dog_detail.DogDetailActivity
-import kotlinx.android.synthetic.main.fragment_cat.recycler_view
+import com.example.firsthomework.kotlin.ui.cat.adapter.PetAdapter
+import com.example.firsthomework.kotlin.ui.pet_detail.PetDetailActivity
 import kotlinx.android.synthetic.main.fragment_dog.*
 
-class DogFragment : Fragment(), DogAdapter.OnItemClick {
+class DogFragment : Fragment(), PetAdapter.OnItemClick {
 
-    private lateinit var adapter: DogAdapter
+    private lateinit var adapter: PetAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,15 +31,23 @@ class DogFragment : Fragment(), DogAdapter.OnItemClick {
     }
 
     private fun setupAdapter() {
-        adapter = DogAdapter(this)
+        adapter = PetAdapter(this)
         recycler_view_dog.adapter = adapter
         recycler_view_dog.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateItems()
+    }
+
+    private fun updateItems() {
         adapter.update(dogArray)
     }
 
     override fun onItemCLick(item: Pets) {
-        val intent = Intent(activity, DogDetailActivity::class.java)
-        intent.putExtra("dog", item)
+        val intent = Intent(activity, PetDetailActivity::class.java)
+        intent.putExtra("pet", item)
         startActivity(intent)
     }
 }

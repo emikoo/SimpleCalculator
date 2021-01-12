@@ -1,23 +1,17 @@
-package com.example.firsthomework.kotlin.ui.dog_detail
+package com.example.firsthomework.kotlin.ui.pet_detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.example.firsthomework.R
 import com.example.firsthomework.kotlin.models.Pets
-import com.example.firsthomework.kotlin.ui.cat.adapter.getLikeImage
-import kotlinx.android.synthetic.main.activity_cat_detail.*
-import kotlinx.android.synthetic.main.activity_cat_detail.header
-import kotlinx.android.synthetic.main.activity_cat_detail.image
-import kotlinx.android.synthetic.main.activity_cat_detail.like
-import kotlinx.android.synthetic.main.activity_cat_detail.subtitle
 import kotlinx.android.synthetic.main.activity_dog_detail.*
 
-class DogDetailActivity : AppCompatActivity() {
+class PetDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dog_detail)
-        val item = intent.getSerializableExtra("dog") as Pets
+        val item = intent.getSerializableExtra("pet") as Pets
         setupViews(item)
     }
 
@@ -31,3 +25,6 @@ class DogDetailActivity : AppCompatActivity() {
         like_dog.setImageResource(getLikeImage(item.isLiked))
     }
 }
+
+fun getLikeImage(state: Boolean) = if (state)  R.drawable.ic_liked
+else R.drawable.ic_unliked

@@ -6,16 +6,18 @@ import androidx.fragment.app.Fragment
 import com.example.firsthomework.R
 import com.example.firsthomework.kotlin.ui.cat.CatFragment
 import com.example.firsthomework.kotlin.ui.dog.DogFragment
-import com.example.firsthomework.kotlin.ui.favorities.FavoritePetsFragment
+import com.example.firsthomework.kotlin.ui.favorities.FavoritesPetsFragment
 import com.example.firsthomework.kotlin.ui.pet.PetFragment
 import com.example.firsthomework.kotlin.ui.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    //+Добавить новый фрагмент FavoritesPets
-    //+Добавить новый элемент в bottom navigation view (сердечко)
-    //+В layout добавить TextViw на весь экран с название Favorites pets
+    //+Удалить CatAdapter
+    //+Переименовать DogAdapter в PetAdapter
+    //+использовать Вместо CatAdapter -> PetAdapter
+    //+использовать Вместо DogAdapter -> PetAdapter
+    //+Сверстать ui
 
     lateinit var adapter: MainViewPagerAdapter
 
@@ -27,11 +29,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewPager() {
-        adapter = MainViewPagerAdapter(supportFragmentManager)
+        adapter = MainViewPagerAdapter(this)
         adapter.addFragment(PetFragment())
-        adapter.addFragment(FavoritePetsFragment())
+        adapter.addFragment(FavoritesPetsFragment())
         adapter.addFragment(ProfileFragment())
+        view_pager.offscreenPageLimit = 3
         view_pager.adapter = adapter
+        view_pager.isEnabled = false
+        view_pager.isUserInputEnabled = false
     }
 
     private fun setupBottomNavigation() {

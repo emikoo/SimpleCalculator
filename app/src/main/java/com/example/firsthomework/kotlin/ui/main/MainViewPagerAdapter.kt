@@ -1,10 +1,12 @@
 package com.example.firsthomework.kotlin.ui.main
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class MainViewPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
+class MainViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
     private val fragments = mutableListOf<Fragment>()
 
@@ -12,11 +14,11 @@ class MainViewPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePage
         fragments.add(fragment)
     }
 
-    override fun getItem(position: Int): Fragment {
-        return fragments[position]
+    override fun getItemCount(): Int {
+        return fragments.size
     }
 
-    override fun getCount(): Int {
-        return fragments.size
+    override fun createFragment(position: Int): Fragment {
+        return fragments[position]
     }
 }

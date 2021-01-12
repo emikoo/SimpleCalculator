@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/image"
+        android:id="@+id/image_pet"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_margin="@dimen/margin_dp_16"
@@ -16,38 +16,38 @@
         tools:src="@drawable/ic_baseline_person_24" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/title_pet"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_dp_16"
         android:layout_marginEnd="@dimen/margin_dp_16"
-        app:layout_constraintEnd_toStartOf="@id/like"
-        app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintTop_toTopOf="@id/image"
+        app:layout_constraintEnd_toStartOf="@id/like_pet"
+        app:layout_constraintStart_toEndOf="@id/image_pet"
+        app:layout_constraintTop_toTopOf="@id/image_pet"
         tools:text="Title" />
 
     <TextView
-        android:id="@+id/subtitle"
+        android:id="@+id/subtitle_pet"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_dp_16"
         android:layout_marginTop="@dimen/margin_dp_8"
         android:layout_marginEnd="@dimen/margin_dp_16"
-        app:layout_constraintEnd_toStartOf="@id/like"
-        app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintEnd_toStartOf="@id/like_pet"
+        app:layout_constraintStart_toEndOf="@id/image_pet"
+        app:layout_constraintTop_toBottomOf="@id/title_pet"
         tools:text="Subtitle" />
 
     <ImageButton
-        android:id="@+id/like"
+        android:id="@+id/like_pet"
         android:layout_width="@dimen/margin_dp_24"
         android:layout_height="@dimen/margin_dp_24"
         android:layout_margin="@dimen/margin_dp_16"
         android:background="@null"
         android:src="@drawable/ic_unliked"
-        app:layout_constraintBottom_toBottomOf="@id/image"
+        app:layout_constraintBottom_toBottomOf="@id/image_pet"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/image" />
+        app:layout_constraintTop_toTopOf="@id/image_pet" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

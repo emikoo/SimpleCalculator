@@ -10,20 +10,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firsthomework.R
 import com.example.firsthomework.kotlin.models.Pets
+import com.example.firsthomework.kotlin.ui.pet_detail.getLikeImage
 
-class CatAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<CatAdapter.CatViewHolder>() {
+class PetAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
 
     private var array = mutableListOf<Pets>()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatAdapter.CatViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cat, parent, false)
-        return CatViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_pet, parent, false)
+        return PetViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return array.count()
     }
 
-    override fun onBindViewHolder(holder: CatAdapter.CatViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PetViewHolder, position: Int) {
         val item = array[position]
         holder.bind(item)
         holder.itemView.setOnClickListener {
@@ -41,12 +42,12 @@ class CatAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<CatAd
         notifyDataSetChanged()
     }
 
-    class CatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class PetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val image: ImageView = itemView.findViewById(R.id.image)
-        private val title: TextView = itemView.findViewById(R.id.title)
-        private val subtitle: TextView = itemView.findViewById(R.id.subtitle)
-        val like: ImageButton = itemView.findViewById(R.id.like)
+        private val image: ImageView = itemView.findViewById(R.id.image_pet)
+        private val title: TextView = itemView.findViewById(R.id.title_pet)
+        private val subtitle: TextView = itemView.findViewById(R.id.subtitle_pet)
+        val like: ImageButton = itemView.findViewById(R.id.like_pet)
 
         fun bind(item: Pets) {
             Glide.with(image.context)
@@ -63,5 +64,3 @@ class CatAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<CatAd
         fun onItemCLick(item: Pets)
     }
 }
-    fun getLikeImage(state: Boolean) = if (state)  R.drawable.ic_liked
-    else R.drawable.ic_unliked

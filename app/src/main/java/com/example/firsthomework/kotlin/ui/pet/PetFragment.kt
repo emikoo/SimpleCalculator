@@ -30,7 +30,10 @@ class PetFragment : Fragment() {
     }
 
     private fun setupViewPager() {
-        viewPagerAdapter = PetViewPagerAdapter(childFragmentManager)
+        viewPagerAdapter =
+            PetViewPagerAdapter(
+                childFragmentManager
+            )
         viewPagerAdapter.addFragment(CatFragment(), "Котики")
         viewPagerAdapter.addFragment(DogFragment(), "Собачки")
         view_pager.adapter = viewPagerAdapter

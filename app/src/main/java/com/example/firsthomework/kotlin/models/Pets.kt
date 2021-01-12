@@ -27,3 +27,13 @@ val dogArray = mutableListOf<Pets>().apply {
     add(Pets("https://static.wikia.nocookie.net/tomandjerry/images/0/0f/Quiz-tom-jerry-richtig-03-1035-10110.png/revision/latest?cb=20200118121656", "Rpike", "54cm", "Rpike protects Berry", false, "home"))
     add(Pets("https://static.wikia.nocookie.net/tomandjerry/images/0/0f/Quiz-tom-jerry-richtig-03-1035-10110.png/revision/latest?cb=20200118121656", "Dpike", "55cm", "Dpike protects Merry", true, "home"))
 }
+
+fun changeState(item: Pets, array: MutableList<Pets>) {
+    for (i in array) {
+        if (i == item) item.isLiked = !item.isLiked
+    }
+}
+
+fun getFavoriteArray() = mutableListOf<Pets>().apply {    addAll(catArray.filter { it.isLiked })
+    addAll(dogArray.filter { it.isLiked })
+}
