@@ -1,4 +1,4 @@
-package com.example.firsthomework.kotlin.healper.ui
+package com.example.firsthomework.kotlin.healper.ui.main.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +15,8 @@ class MainAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<Main
     class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: Name) {
             itemView.name_tv.text = item.name
+            itemView.phone_number_tv.text = item.phoneNumber
+            itemView.age_tv.text = item.age
         }
     }
 
