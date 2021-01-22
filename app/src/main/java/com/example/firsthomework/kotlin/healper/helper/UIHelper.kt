@@ -1,4 +1,4 @@
-package com.example.firsthomework.kotlin.healper
+package com.example.firsthomework.kotlin.healper.helper
 
 import android.content.Context
 import android.view.View
@@ -34,7 +34,10 @@ fun showSnackbar(view: View, message: String){
 
 fun checkFieldIsEmpty(value: String, context: Context, message: String): Boolean {
     if (value.isEmpty()){
-        showToast(context, message)
+        showToast(
+            context,
+            message
+        )
         return true
     }
     return false

@@ -3,6 +3,7 @@ package com.example.firsthomework.kotlin.healper.ui.image_list.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firsthomework.R

@@ -1,4 +1,4 @@
-package com.example.firsthomework.kotlin.healper
+package com.example.firsthomework.kotlin.healper.helper
 
 import android.app.Activity
 import android.content.pm.PackageManager

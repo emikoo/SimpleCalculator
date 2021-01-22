@@ -12,12 +12,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var adapter: MainViewPagerAdapter
+    //В фрагменте FavoriteFragment, по такому же принципу как и в PublicationFragment добавить возможность добавления/удаления из избранного
 
-//    + Добавить фрагмент FavoritesFragment
-//    + Добавить layout для FavoritesFragment
-//    + Заменить иконку где у нас посты на иконку постов, а не сердце
-//    + в BottomMenu поменять 3 категории по их названию с (image, image, Профиль) на (Публикации, Избранно, Профиль)
+    lateinit var adapter: MainViewPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         adapter.addFragment(FavoritesFragment())
         adapter.addFragment(ProfileFragment())
         view_pager.adapter = adapter
+        view_pager.offscreenPageLimit = 3
+        view_pager.isEnabled = false
         view_pager.isUserInputEnabled = false
     }
 
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation_view.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.image -> changeCurrentItem(0)
-                R.id.image1 -> changeCurrentItem(1)
+                R.id.favorite -> changeCurrentItem(1)
                 R.id.profile -> changeCurrentItem(2)
             }
             true

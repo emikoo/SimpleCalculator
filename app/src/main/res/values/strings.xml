@@ -3,4 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="subscribe">"Подписаться "</string>
+    <string name="publication">Публикации</string>
+    <string name="favorites">Избранное</string>
+    <string name="profile">Профиль</string>
 </resources>

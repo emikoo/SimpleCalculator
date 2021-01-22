@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/icon_civ"
+        android:id="@+id/icon_fav"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@color/colorAccent"
@@ -18,54 +18,54 @@
         android:layout_marginStart="@dimen/margin_8_dp"/>
 
     <TextView
-        android:id="@+id/name_tv"
+        android:id="@+id/name_fav"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:lines="1"
         android:ellipsize="end"
-        app:layout_constraintStart_toEndOf="@+id/icon_civ"
+        app:layout_constraintStart_toEndOf="@+id/icon_fav"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/icon_civ"
-        app:layout_constraintBottom_toBottomOf="@+id/icon_civ"
+        app:layout_constraintTop_toTopOf="@+id/icon_fav"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_fav"
         android:layout_marginStart="@dimen/margin_8_dp"
         android:layout_marginEnd="@dimen/margin_8_dp"
         tools:text="It academy"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/images_rv"
+        android:id="@+id/images_fav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="200dp"
         android:maxHeight="250dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/icon_civ"
+        app:layout_constraintTop_toBottomOf="@+id/icon_fav"
         android:layout_marginTop="@dimen/margin_16_dp"/>
 
     <LinearLayout
-        android:id="@+id/button_container"
+        android:id="@+id/button_container_fav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/images_rv"
+        app:layout_constraintTop_toBottomOf="@id/images_fav"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="@dimen/margin_8_dp"
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/like_btn"
+            android:id="@+id/like_btn_fav"
             android:background="@drawable/ic_unliked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <ImageButton
-            android:id="@+id/comment_btn"
+            android:id="@+id/comment_btn_fav"
             android:background="@drawable/ic_comment"
             android:layout_marginStart="@dimen/margin_16_dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <ImageButton
-            android:id="@+id/direct_btn"
+            android:id="@+id/direct_btn_fav"
             android:background="@drawable/ic_direct"
             android:layout_marginStart="@dimen/margin_16_dp"
             android:layout_width="wrap_content"
