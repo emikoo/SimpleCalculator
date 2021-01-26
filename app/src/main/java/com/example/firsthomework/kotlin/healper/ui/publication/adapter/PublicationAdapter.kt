@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.firsthomework.R
 import com.example.firsthomework.kotlin.healper.models.Publication
 import com.example.firsthomework.kotlin.healper.ui.image_list.adapter.ImagePublicationAdapter
@@ -33,6 +35,7 @@ class PublicationAdapter(private val listener: ClickListener, private val activi
         }
         holder.itemView.like_btn.setOnClickListener {
             listener.onLikeClick(item, position)
+            holder.itemView.like_btn.setImageResource(getLikeImage(item.isFavorite))
         }
         holder.itemView.comment_btn.setOnClickListener {
             listener.onCommentClick(item)
@@ -73,22 +76,27 @@ class PublicationAdapter(private val listener: ClickListener, private val activi
 
 class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(item: Publication, activity: Activity) {
+        Glide.with(itemView.context).load(item.icon).into(itemView.icon_civ)
         itemView.name_tv.text = item.name
         itemView.like_btn.setImageResource(getLikeImage(item.isFavorite))
         setupRecyclerView(item.image, activity)
     }
 
-    private fun getLikeImage(state: Boolean): Int {
-       return if (state) R.drawable.ic_liked
-        else R.drawable.ic_unliked
-    }
-
     private fun setupRecyclerView(items: MutableList<String>, activity: Activity) {
         val adapter = ImagePublicationAdapter()
-        itemView.images_rv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        itemView.images_rv.adapter = adapter
+        val snapHelper = PagerSnapHelper()
+        itemView.images_rv.apply {
+            layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+            this.adapter = adapter
+            this.onFlingListener = null
+            snapHelper.attachToRecyclerView(this)
+            itemView.rv_pi.attachToRecyclerView(this)
+        }
         adapter.addItems(items)
-//        val snapHelper = LinearSnapHelper()
-//        snapHelper.attachToRecyclerView(recyclerView)
     }
+}
+
+fun getLikeImage(state: Boolean): Int {
+    return if (state) R.drawable.ic_liked
+    else R.drawable.ic_unliked
 }
