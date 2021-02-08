@@ -69,6 +69,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+        <TextView
+            android:id="@+id/like_number_pub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/colorBlack"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            tools:text="123" />
+
         <ImageButton
             android:id="@+id/comment_btn"
             android:background="@drawable/ic_comment"
@@ -78,10 +88,10 @@
 
         <ImageButton
             android:id="@+id/direct_btn"
-            android:background="@drawable/ic_direct"
-            android:layout_marginStart="@dimen/margin_16_dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin_16_dp"
+            android:background="@drawable/ic_direct" />
 
     </LinearLayout>
 

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/margin_8_dp"
-    tools:context=".kotlin.healper.ui.favorites.FavoritesFragment">
+    tools:context="com.example.firstkotlinproject.ui.favorites.FavoritesFragment">
 
     <TextView
         android:id="@+id/title"

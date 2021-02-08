@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_margin="@dimen/margin_8_dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".kotlin.healper.ui.publication.PublicationFragment">
+    tools:context="com.example.firstkotlinproject.ui.publication.PublicationFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"

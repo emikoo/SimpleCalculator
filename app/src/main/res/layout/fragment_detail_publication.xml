@@ -61,14 +61,25 @@
         android:layout_marginTop="@dimen/margin_8_dp"
         android:layout_marginStart="@dimen/margin_8_dp"/>
 
+    <TextView
+        android:id="@+id/like_number"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/colorRed"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/favorite_btn"
+        app:layout_constraintBottom_toBottomOf="@id/favorite_btn"
+        tools:text="123"/>
+
     <ImageButton
         android:id="@+id/comment_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/favorite_btn"
-        app:layout_constraintBottom_toBottomOf="@+id/favorite_btn"
+        app:layout_constraintStart_toEndOf="@+id/like_number"
+        app:layout_constraintBottom_toBottomOf="@+id/like_number"
         android:background="@drawable/ic_comment"
-        android:layout_marginStart="@dimen/margin_8_dp"/>
+        android:layout_marginStart="@dimen/margin_16_dp"/>
 
     <ImageButton
         android:id="@+id/direct_btn"
@@ -77,6 +88,6 @@
         app:layout_constraintStart_toEndOf="@+id/comment_btn"
         app:layout_constraintBottom_toBottomOf="@+id/favorite_btn"
         android:background="@drawable/ic_direct"
-        android:layout_marginStart="@dimen/margin_8_dp"/>
+        android:layout_marginStart="@dimen/margin_16_dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
