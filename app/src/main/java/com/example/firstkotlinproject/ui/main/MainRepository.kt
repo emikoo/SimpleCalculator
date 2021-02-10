@@ -27,4 +27,26 @@ class MainRepository(private val callback: RequestResult) {
         })
     }
 
+    fun fetchProfile() {
+        api.fetchProfile().enqueue(object: Callback<Publication> {
+            override fun onFailure(call: Call<Publication>, t: Throwable) {
+                return callback.onFailure(t)
+            }
+
+            override fun onResponse(call: Call<Publication>, response: Response<Publication>) {
+                return if (response.body() != null) callback.onSuccess(response.body())
+                else callback.onFailure(Throwable("error"))
+            }
+        })
+    }
+    //CRUD - CREATE, READ, UPDATE, DELETE
+    //POST GET PUT DELETE
+
+    //Процесс, поток
+    //Ассинхронный, синхронный
+    //coroutine - LiveData/Flow, rxJava - Single/Observer
+
+    //Способы передачи данных между сервером и клиентом
+    //json, XML, YAML
+
 }

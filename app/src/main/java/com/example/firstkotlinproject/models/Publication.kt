@@ -11,7 +11,8 @@ data class Publication (
     var images: MutableList<Images>,
     var randomImage: String,
     var countOfLikes: Int = 0,
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean = false,
+    var comment: String
 ) : Serializable
 
 val imageArray = mutableListOf<String>().apply {

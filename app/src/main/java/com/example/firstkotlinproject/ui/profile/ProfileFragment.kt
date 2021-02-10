@@ -8,16 +8,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.firsthomework.R
+import com.example.firstkotlinproject.helper.showToast
+import com.example.firstkotlinproject.models.Images
 import com.example.firstkotlinproject.models.Publication
 import com.example.firstkotlinproject.ui.detail_publication.DetailPublicationFragment
+import com.example.firstkotlinproject.ui.main.MainRepository
 import com.example.firstkotlinproject.ui.profile.adapter.ClickListener
 import com.example.firstkotlinproject.ui.profile.adapter.ProfileAdapter
+import com.example.firstkotlinproject.ui.publication.RequestResult
 import kotlinx.android.synthetic.main.fragment_profile.*
 
-class ProfileFragment : Fragment(), ClickListener {
+class ProfileFragment : Fragment(), ClickListener, RequestResult {
 
     lateinit var adapter: ProfileAdapter
     val COUNT_OF_GRID = 3
+    private lateinit var repository: MainRepository
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,30 +36,41 @@ class ProfileFragment : Fragment(), ClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-        setupViews()
     }
 
     private fun setupRecyclerView() {
         adapter = ProfileAdapter(this)
         recycler_view_profile.adapter = adapter
         recycler_view_profile.layoutManager = GridLayoutManager(requireContext(), COUNT_OF_GRID)
-//        adapter.addItems(userPublications())
     }
 
-    private fun setupViews() {
-//        val user = userPublications().last()
-//        Glide.with(requireContext()).load(user.icon).into(image_civ)
-//        name_tv.text = user.name
-//        description_tv.text = user.phoneNumber
+    override fun onResume() {
+        super.onResume()
+        repository = MainRepository(this)
+        repository.fetchProfile()
     }
 
-//    private fun userPublications() : MutableList<Publication> = publicationsArray.filter { it.id == 7 } as MutableList<Publication>
+    override fun onItemClick(item: Images) {
+//        val fragment = DetailPublicationFragment()
+//        val bundle = Bundle()
+//        bundle.putSerializable("publication", item)
+//        fragment.arguments = bundle
+//        activity?.supportFragmentManager?.beginTransaction()?.add(R.id.main, fragment)?.addToBackStack(fragment.tag)?.commit()
+    }
+    override fun onFailure(t: Throwable) {
+        showToast(requireContext(), t.message.toString())
+    }
 
-    override fun onItemClick(item: Publication) {
-        val fragment = DetailPublicationFragment()
-        val bundle = Bundle()
-        bundle.putSerializable("publication", item)
-        fragment.arguments = bundle
-        activity?.supportFragmentManager?.beginTransaction()?.add(R.id.main, fragment)?.addToBackStack(fragment.tag)?.commit()
+    override fun <T>onSuccess(result: T) {
+        val user = result as Publication
+        setupViews(user)
+    }
+
+    private fun setupViews(user: Publication) {
+        Glide.with(requireContext()).load(user.image).into(image_civ)
+        name_tv.text = user.name
+        description_tv.text = user.phoneNumber
+
+        adapter.addItems(user.images)
     }
 }

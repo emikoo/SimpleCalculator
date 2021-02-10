@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firsthomework.R
-import com.example.firstkotlinproject.models.Publication
+import com.example.firstkotlinproject.models.Images
 import kotlinx.android.synthetic.main.item_profile.view.*
 
 class ProfileAdapter(val listener: ClickListener) : RecyclerView.Adapter<ProfileViewHolder>() {
 
-    var items = mutableListOf<Publication>()
+    var items = mutableListOf<Images>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
         return ProfileViewHolder(
@@ -25,13 +25,13 @@ class ProfileAdapter(val listener: ClickListener) : RecyclerView.Adapter<Profile
 
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
         val item = items[position]
-        holder.bind(item.randomImage)
+        holder.bind(item.url)
         holder.itemView.setOnClickListener {
             listener.onItemClick(item)
         }
     }
 
-    fun addItems(items: MutableList<Publication>) {
+    fun addItems(items: MutableList<Images>) {
         this.items = items
         notifyDataSetChanged()
     }
@@ -39,11 +39,11 @@ class ProfileAdapter(val listener: ClickListener) : RecyclerView.Adapter<Profile
 }
 
 class ProfileViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(imageUrl: String){
+    fun bind(imageUrl: String?){
         Glide.with(itemView.context).load(imageUrl).into(itemView.icon)
     }
 }
 
 interface ClickListener {
-    fun onItemClick(item: Publication)
+    fun onItemClick(item: Images)
 }

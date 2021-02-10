@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_publication.*
 
 interface RequestResult {
     fun onFailure(t: Throwable)
-    fun onSuccess(result: MutableList<Publication>)
+    fun <T>onSuccess(result: T)
 }
 class PublicationFragment : Fragment(), PublicationAdapter.ClickListener, RequestResult {
 
@@ -41,8 +41,9 @@ class PublicationFragment : Fragment(), PublicationAdapter.ClickListener, Reques
         showToast(requireContext(), t.message.toString())
     }
 
-    override fun onSuccess(result: MutableList<Publication>) {
-        adapter.addItems(result)
+    override fun <T>onSuccess(result: T) {
+        publicationsArray = result as MutableList<Publication>
+        adapter.addItems(publicationsArray)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,10 +70,8 @@ class PublicationFragment : Fragment(), PublicationAdapter.ClickListener, Reques
     }
 
     override fun onCommentClick(item: Publication) {
-        TODO("Not yet implemented")
     }
 
     override fun onDirectClick(item: Publication) {
-        TODO("Not yet implemented")
     }
 }

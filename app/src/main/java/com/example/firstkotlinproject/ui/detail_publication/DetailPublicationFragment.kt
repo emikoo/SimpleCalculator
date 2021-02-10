@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.firsthomework.R
+import com.example.firstkotlinproject.models.Images
 import com.example.firstkotlinproject.models.Publication
 import com.example.firstkotlinproject.ui.profile.adapter.ClickListener
 import com.example.firstkotlinproject.ui.profile.adapter.ProfileAdapter
@@ -34,7 +35,7 @@ class DetailPublicationFragment : Fragment(), ClickListener {
         Glide.with(requireContext()).load(data.image).into(icon_civ)
         name_tv.text = data.name
         setupRV()
-        adapter.addItems(mutableListOf(data))
+        //adapter.addItems(mutableListOf(data))
     }
 
     private fun setupRV() {
@@ -43,7 +44,6 @@ class DetailPublicationFragment : Fragment(), ClickListener {
         images_rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
-    override fun onItemClick(item: Publication) {
-        TODO("Not yet implemented")
+    override fun onItemClick(item: Images) {
     }
 }
