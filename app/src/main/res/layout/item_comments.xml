@@ -1,0 +1,51 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/author_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/comment_like_btn"
+        app:layout_constraintBottom_toBottomOf="@id/comment_like_btn"
+        tools:text="author"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/margin_8_dp"/>
+
+    <TextView
+        android:id="@+id/comment_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/author_tv"
+        app:layout_constraintTop_toTopOf="@id/comment_like_btn"
+        app:layout_constraintBottom_toBottomOf="@id/comment_like_btn"
+        app:layout_constraintEnd_toStartOf="@id/comment_like_btn"
+        tools:text="it cool application"
+        android:layout_marginStart="@dimen/margin_8_dp"
+        android:layout_marginEnd="@dimen/margin_8_dp"/>
+
+    <ImageButton
+        android:id="@+id/comment_like_btn"
+        android:background="@drawable/ic_unliked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/margin_8_dp"
+        android:layout_marginStart="@dimen/margin_8_dp"
+        android:layout_marginEnd="@dimen/margin_8_dp"/>
+
+    <TextView
+        android:id="@+id/comment_like_tv"
+        android:textSize="8sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/comment_like_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin_8_dp"
+        android:layout_marginEnd="@dimen/margin_8_dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

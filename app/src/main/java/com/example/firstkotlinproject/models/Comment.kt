@@ -1,8 +1,10 @@
 package com.example.firstkotlinproject.models
 
-data class Meet(
-    val title: String? = null,
-    val url: String? = null
+data class Comment(
+    var name: String? = null,
+    var message: String? = null,
+    var isFavorite: Boolean = false,
+    var countOfFavorite: Int = 0
 )
 
 //GET - получение данных

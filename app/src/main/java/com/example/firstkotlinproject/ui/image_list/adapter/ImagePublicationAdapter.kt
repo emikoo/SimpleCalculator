@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.item_image.view.*
 
 class ImagePublicationAdapter : RecyclerView.Adapter<ImagePublicationViewHolder>() {
 
-    private var urls = mutableListOf<Images>()
+    private var urls: MutableList<Images> = mutableListOf<Images>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagePublicationViewHolder {
         return ImagePublicationViewHolder(
@@ -24,7 +24,7 @@ class ImagePublicationAdapter : RecyclerView.Adapter<ImagePublicationViewHolder>
     }
 
     override fun onBindViewHolder(holder: ImagePublicationViewHolder, position: Int) {
-        val item = urls[position]
+        val item = urls.get(position)
         holder.bind(item)
 
     }
@@ -37,7 +37,7 @@ class ImagePublicationAdapter : RecyclerView.Adapter<ImagePublicationViewHolder>
 
 
 class ImagePublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(data: Images) {
-        Glide.with(itemView.image_iv.context).load(data.url).into(itemView.image_iv)
+    fun bind(data: Images?) {
+        Glide.with(itemView.image_iv.context).load(data?.url).into(itemView.image_iv)
     }
 }

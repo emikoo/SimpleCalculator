@@ -3,16 +3,16 @@ package com.example.firstkotlinproject.models
 import java.io.Serializable
 
 data class Publication (
-    var id: Int,
-    var image: String,
-    var name: String,
-    var phoneNumber: String,
-    var age: String,
-    var images: MutableList<Images>,
-    var randomImage: String,
+    var id: Int? = null,
+    var image: String? = null,
+    var name: String? = null,
+    var phoneNumber: String? = null,
+    var age: String? = null,
+    var images: MutableList<Images>? = null,
+    var randomImage: String? = null,
     var countOfLikes: Int = 0,
     var isFavorite: Boolean = false,
-    var comment: String
+    var comment: MutableList<Comment>? = null
 ) : Serializable
 
 val imageArray = mutableListOf<String>().apply {

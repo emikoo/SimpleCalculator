@@ -1,5 +1,6 @@
 package com.example.firstkotlinproject.ui.publication.adapter
 
+import CommentsPublicationAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firsthomework.R
+import com.example.firstkotlinproject.models.Comment
 import com.example.firstkotlinproject.models.Images
 import com.example.firstkotlinproject.models.Publication
 import com.example.firstkotlinproject.ui.image_list.adapter.ImagePublicationAdapter
@@ -82,9 +84,24 @@ class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         else itemView.like_number_pub.visibility = View.GONE
         itemView.like_btn.setImageResource(getLikeImage(item.isFavorite))
         setupImagesRecyclerView(item.images)
+        setupCommentsRecyclerView(item.comment, itemView.comments_rv)
     }
 
-    fun setupImagesRecyclerView(items: MutableList<Images>) {
+    //protected - метод с параметром доступа виден для других классов только внутри родительской папки
+    //private - метод с параметром доступа виден для других классов только внутри класс
+    //public - метод с параметром доступа виден всем
+    //internal - метод с параметром доступа виден для других только для родительского модуля
+
+    private fun setupCommentsRecyclerView(items: MutableList<Comment>?, recyclerView: RecyclerView) {
+        val adapter = CommentsPublicationAdapter()
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(recyclerView.context)
+            this.adapter = adapter
+        }
+        items?.let { adapter.addItems(it) }
+    }
+
+    fun setupImagesRecyclerView(items: MutableList<Images>?) {
         val adapter = ImagePublicationAdapter()
         val snapHelper = PagerSnapHelper()
         itemView.images_rv.apply {
@@ -94,7 +111,7 @@ class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
             snapHelper.attachToRecyclerView(this)
             itemView.rv_pi.attachToRecyclerView(this)
         }
-        adapter.addItems(items)
+        items?.let { adapter.addItems(it) }
     }
 }
 

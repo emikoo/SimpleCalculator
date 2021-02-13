@@ -3,17 +3,11 @@ package com.example.firstkotlinproject.ui.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.firsthomework.R
-import com.example.firstkotlinproject.helper.showToast
-import com.example.firstkotlinproject.models.Meet
-import com.example.firstkotlinproject.network.RetrofitClient
 import com.example.firstkotlinproject.ui.favorites.FavoritesFragment
 import com.example.firstkotlinproject.ui.publication.PublicationFragment
 import com.example.firstkotlinproject.ui.main.adapter.MainViewPagerAdapter
 import com.example.firstkotlinproject.ui.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Response
-import javax.security.auth.callback.Callback
 
 
 class MainActivity : AppCompatActivity() {
