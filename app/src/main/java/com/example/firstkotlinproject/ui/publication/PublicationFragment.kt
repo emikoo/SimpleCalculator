@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firsthomework.R
 import com.example.firstkotlinproject.helper.showToast
-import com.example.firstkotlinproject.models.Publication
+import com.example.firstkotlinproject.data.models.Publication
 import com.example.firstkotlinproject.ui.main.MainRepository
 import com.example.firstkotlinproject.ui.publication.adapter.PublicationAdapter
 import kotlinx.android.synthetic.main.fragment_publication.*
@@ -59,15 +59,15 @@ class PublicationFragment : Fragment(), PublicationAdapter.ClickListener, Reques
     }
 
     private fun updateItems() {
-        adapter.addItems(publicationsArray)
+//        adapter.addItems(publicationsArray)
     }
 
     override fun onItemClick(item: Publication) {
     }
 
     override fun onLikeClick(item: Publication, position: Int) {
-//        changeState(item, publicationsArray)
-//        adapter.update(position)
+//         changeState(item)
+//         adapter.update(position)
     }
 
     override fun onCommentClick(item: Publication) {

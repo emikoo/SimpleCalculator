@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firsthomework.R
-import com.example.firstkotlinproject.models.Images
+import com.example.firstkotlinproject.data.models.Images
 import kotlinx.android.synthetic.main.item_image.view.*
 
 class ImagePublicationAdapter : RecyclerView.Adapter<ImagePublicationViewHolder>() {

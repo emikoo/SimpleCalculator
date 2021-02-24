@@ -1,6 +1,6 @@
-package com.example.firstkotlinproject.network
+package com.example.firstkotlinproject.data.network
 
-import com.example.firstkotlinproject.models.Publication
+import com.example.firstkotlinproject.data.models.Publication
 import retrofit2.Call
 import retrofit2.http.GET
 

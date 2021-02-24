@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firsthomework.R
-import com.example.firstkotlinproject.helper.showActionSnackbar
-import com.example.firstkotlinproject.models.Publication
+import com.example.firstkotlinproject.data.models.Publication
 import com.example.firstkotlinproject.ui.publication.adapter.PublicationAdapter
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
@@ -48,12 +47,12 @@ class FavoritesFragment : Fragment(), PublicationAdapter.ClickListener {
 
     override fun onLikeClick(item: Publication, position: Int) {
 //        adapter.removeItem(position)
-//        changeState(item, publicationsArray)
+//        changeState(item)
 //        showActionSnackbar(favorite_rv,
 //            "Вы удалили из избранного ${item.name}",
 //            "Восстановить", {
 //                adapter.restoreItem(position, item)
-//                changeState(item, publicationsArray)
+//                changeState(item)
 //            }, requireContext()
 //        )
     }

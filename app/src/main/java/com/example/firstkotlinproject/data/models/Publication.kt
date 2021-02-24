@@ -1,8 +1,15 @@
-package com.example.firstkotlinproject.models
+package com.example.firstkotlinproject.data.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.example.firstkotlinproject.data.local.type.PublicationTypeConverter
 import java.io.Serializable
 
+@Entity(tableName = "publication")
+@TypeConverters(PublicationTypeConverter::class)
 data class Publication (
+    @PrimaryKey(autoGenerate = false)
     var id: Int? = null,
     var image: String? = null,
     var name: String? = null,
@@ -23,13 +30,17 @@ val imageArray = mutableListOf<String>().apply {
     add("https://static.wikia.nocookie.net/vocaloid/images/f/f4/Seeeeecun_icon.jpg/revision/latest?cb=20181222132429")
 }
 
-//fun changeState(item: Publication, array: MutableList<Publication>) {
-//    for (i in array) if (i == item) item.isFavorite = !item.isFavorite
+//fun changeState(item: Publication) {
+//    if (item.isFavorite == item.isFavorite) {
+//        item.isFavorite = !item.isFavorite
+//    }
 //    if (item.isFavorite) item.countOfLikes += 1
 //    else item.countOfLikes -= 1
 //}
-//
-//fun getFavoriteArray() = mutableListOf<Publication>().apply {    addAll(publicationsArray.filter { it.isFavorite }) }
+
+//fun getFavoriteArray() {
+// mutableListOf<Publication>().apply {    addAll(publicationsArray.filter { it.isFavorite }) }
+// }
 
 //val publicationsArray = mutableListOf<Publication>().apply {
 //    add(Publication(1,"https://64.media.tumblr.com/e8d9ed24c0202365ac2932e44574060b/tumblr_pz4kfjkDBN1xk7jd9o6_250.png","Tom", "999777222107", "80", imageArray, imageArray.random()))

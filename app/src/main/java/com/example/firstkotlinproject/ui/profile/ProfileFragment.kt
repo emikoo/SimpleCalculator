@@ -9,9 +9,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.firsthomework.R
 import com.example.firstkotlinproject.helper.showToast
-import com.example.firstkotlinproject.models.Images
-import com.example.firstkotlinproject.models.Publication
-import com.example.firstkotlinproject.ui.detail_publication.DetailPublicationFragment
+import com.example.firstkotlinproject.data.models.Images
+import com.example.firstkotlinproject.data.models.Publication
 import com.example.firstkotlinproject.ui.main.MainRepository
 import com.example.firstkotlinproject.ui.profile.adapter.ClickListener
 import com.example.firstkotlinproject.ui.profile.adapter.ProfileAdapter

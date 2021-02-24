@@ -1,6 +1,5 @@
 package com.example.firstkotlinproject.ui.detail_publication
 
-import android.R.attr
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.firsthomework.R
-import com.example.firstkotlinproject.models.Images
-import com.example.firstkotlinproject.models.Publication
+import com.example.firstkotlinproject.data.models.Images
+import com.example.firstkotlinproject.data.models.Publication
 import com.example.firstkotlinproject.ui.profile.adapter.ClickListener
 import com.example.firstkotlinproject.ui.profile.adapter.ProfileAdapter
 import kotlinx.android.synthetic.main.fragment_detail_publication.*

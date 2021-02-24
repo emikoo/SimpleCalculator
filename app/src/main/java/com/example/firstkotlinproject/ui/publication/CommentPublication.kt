@@ -3,7 +3,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firsthomework.R
-import com.example.firstkotlinproject.models.Comment
+import com.example.firstkotlinproject.data.models.Comment
 import kotlinx.android.synthetic.main.item_comments.view.*
 
 class CommentsPublicationAdapter : RecyclerView.Adapter<CommentsPublicationViewHolder>() {

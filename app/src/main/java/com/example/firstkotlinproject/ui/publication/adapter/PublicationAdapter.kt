@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firsthomework.R
-import com.example.firstkotlinproject.models.Comment
-import com.example.firstkotlinproject.models.Images
-import com.example.firstkotlinproject.models.Publication
+import com.example.firstkotlinproject.data.models.Comment
+import com.example.firstkotlinproject.data.models.Images
+import com.example.firstkotlinproject.data.models.Publication
 import com.example.firstkotlinproject.ui.image_list.adapter.ImagePublicationAdapter
 import kotlinx.android.synthetic.main.item_main.view.*
 

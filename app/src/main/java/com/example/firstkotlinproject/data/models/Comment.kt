@@ -1,4 +1,4 @@
-package com.example.firstkotlinproject.models
+package com.example.firstkotlinproject.data.models
 
 data class Comment(
     var name: String? = null,

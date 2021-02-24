@@ -1,4 +1,4 @@
-package com.example.firstkotlinproject.network
+package com.example.firstkotlinproject.data.network
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

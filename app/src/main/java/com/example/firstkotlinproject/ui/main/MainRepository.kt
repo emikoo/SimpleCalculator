@@ -1,7 +1,7 @@
 package com.example.firstkotlinproject.ui.main
 
-import com.example.firstkotlinproject.models.Publication
-import com.example.firstkotlinproject.network.RetrofitClient
+import com.example.firstkotlinproject.data.models.Publication
+import com.example.firstkotlinproject.data.network.RetrofitClient
 import com.example.firstkotlinproject.ui.publication.RequestResult
 import retrofit2.Call
 import retrofit2.Callback
