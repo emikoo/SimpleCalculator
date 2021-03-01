@@ -15,20 +15,34 @@ import com.example.firstkotlinproject.data.models.Publication
 import com.example.firstkotlinproject.ui.image_list.adapter.ImagePublicationAdapter
 import kotlinx.android.synthetic.main.item_main.view.*
 
-class PublicationAdapter(private val listener: ClickListener) : RecyclerView.Adapter<PublicationViewHolder>() {
+class PublicationAdapter(private val listener: ClickListener) : RecyclerView.Adapter<BaseViewHolder>() {
 
     private var items = mutableListOf<Publication>()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PublicationViewHolder {
-        return PublicationViewHolder(
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+        return if (viewType == VIEW_TYPE_DATE) PublicationViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_main, parent, false)
+        ) else EmptyViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_empty, parent, false)
         )
     }
 
     override fun getItemCount(): Int {
-        return items.count()
+        return if (items.count() == 0) 1
+        else items.count()
     }
 
-    override fun onBindViewHolder(holder: PublicationViewHolder, position: Int) {
+    override fun getItemViewType(position: Int): Int {
+        return if (items.count() == 0) VIEW_TYPE_EMPTY
+        else VIEW_TYPE_DATE
+    }
+
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+        val type = getItemViewType(position)
+        if (type == VIEW_TYPE_DATE) setupPublicationRecyclerView(holder as PublicationViewHolder, position)
+    }
+
+    private fun setupPublicationRecyclerView(holder: PublicationViewHolder, position: Int) {
         val item = items[position]
         holder.bind(item)
         holder.itemView.setOnClickListener {
@@ -73,9 +87,16 @@ class PublicationAdapter(private val listener: ClickListener) : RecyclerView.Ada
         fun onCommentClick(item: Publication)
         fun onDirectClick(item: Publication)
     }
+
+    companion object {
+        private const val VIEW_TYPE_DATE = 0
+        private const val VIEW_TYPE_EMPTY = 1
+    }
 }
 
-class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+open class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+class PublicationViewHolder(itemView: View) : BaseViewHolder(itemView) {
     fun bind(item: Publication) {
         Glide.with(itemView.context).load(item.image).into(itemView.icon_civ)
         itemView.name_tv.text = item.name
@@ -101,7 +122,7 @@ class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         items?.let { adapter.addItems(it) }
     }
 
-    fun setupImagesRecyclerView(items: MutableList<Images>?) {
+    private fun setupImagesRecyclerView(items: MutableList<Images>?) {
         val adapter = ImagePublicationAdapter()
         val snapHelper = PagerSnapHelper()
         itemView.images_rv.apply {
@@ -112,6 +133,11 @@ class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
             itemView.rv_pi.attachToRecyclerView(this)
         }
         items?.let { adapter.addItems(it) }
+    }
+}
+
+class EmptyViewHolder(itemView: View) : BaseViewHolder(itemView) {
+    fun bind(item: Publication) {
     }
 }
 

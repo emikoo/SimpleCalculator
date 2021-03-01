@@ -4,16 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.BinderThread
+import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.firsthomework.R
 import com.example.firstkotlinproject.data.models.Publication
+import com.example.firstkotlinproject.data.models.changeState
+import com.example.firstkotlinproject.ui.main.MainRepository
+import com.example.firstkotlinproject.ui.publication.RequestResult
 import com.example.firstkotlinproject.ui.publication.adapter.PublicationAdapter
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
-class FavoritesFragment : Fragment(), PublicationAdapter.ClickListener {
+class FavoritesFragment : Fragment(), PublicationAdapter.ClickListener, RequestResult {
 
     private lateinit var adapter: PublicationAdapter
+    private lateinit var repository: MainRepository
+    private var publicationsArray = mutableListOf<Publication>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +37,9 @@ class FavoritesFragment : Fragment(), PublicationAdapter.ClickListener {
 
     override fun onResume() {
         super.onResume()
- //       updateItems()
+        //       updateItems()
+        repository = MainRepository(this)
+        repository.fetchFavoritePublications()
     }
 
     private fun setupRecyclerView() {
@@ -39,27 +49,29 @@ class FavoritesFragment : Fragment(), PublicationAdapter.ClickListener {
     }
 
     private fun updateItems() {
- //       adapter.addItems(getFavoriteArray())
+        //       adapter.addItems(getFavoriteArray())
     }
 
     override fun onItemClick(item: Publication) {
     }
 
     override fun onLikeClick(item: Publication, position: Int) {
-//        adapter.removeItem(position)
-//        changeState(item)
-//        showActionSnackbar(favorite_rv,
-//            "Вы удалили из избранного ${item.name}",
-//            "Восстановить", {
-//                adapter.restoreItem(position, item)
-//                changeState(item)
-//            }, requireContext()
-//        )
+        changeState(item)
+        repository.updateChangeFavoriteState(item)
+        adapter.removeItem(position)
     }
 
     override fun onCommentClick(item: Publication) {
     }
 
     override fun onDirectClick(item: Publication) {
+    }
+
+    override fun onFailure(t: Throwable) {
+    }
+
+    override fun <T> onSuccess(result: T) {
+        publicationsArray = result as MutableList<Publication>
+        adapter.addItems(publicationsArray)
     }
 }

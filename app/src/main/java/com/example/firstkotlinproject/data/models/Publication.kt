@@ -18,7 +18,7 @@ data class Publication (
     var images: MutableList<Images>? = null,
     var randomImage: String? = null,
     var countOfLikes: Int = 0,
-    var isFavorite: Boolean = false,
+    var isFavorite: Boolean = true,
     var comment: MutableList<Comment>? = null
 ) : Serializable
 
@@ -30,13 +30,13 @@ val imageArray = mutableListOf<String>().apply {
     add("https://static.wikia.nocookie.net/vocaloid/images/f/f4/Seeeeecun_icon.jpg/revision/latest?cb=20181222132429")
 }
 
-//fun changeState(item: Publication) {
-//    if (item.isFavorite == item.isFavorite) {
-//        item.isFavorite = !item.isFavorite
-//    }
-//    if (item.isFavorite) item.countOfLikes += 1
-//    else item.countOfLikes -= 1
-//}
+fun changeState(item: Publication) {
+    if (item.isFavorite == item.isFavorite) {
+        item.isFavorite = !item.isFavorite
+    }
+    if (item.isFavorite) item.countOfLikes += 1
+    else item.countOfLikes -= 1
+}
 
 //fun getFavoriteArray() {
 // mutableListOf<Publication>().apply {    addAll(publicationsArray.filter { it.isFavorite }) }

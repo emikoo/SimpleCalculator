@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isEmpty
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firsthomework.R
 import com.example.firstkotlinproject.helper.showToast
 import com.example.firstkotlinproject.data.models.Publication
+import com.example.firstkotlinproject.data.models.changeState
 import com.example.firstkotlinproject.ui.main.MainRepository
 import com.example.firstkotlinproject.ui.publication.adapter.PublicationAdapter
+import kotlinx.android.synthetic.main.fragment_favorites.*
 import kotlinx.android.synthetic.main.fragment_publication.*
 
 interface RequestResult {
@@ -43,7 +46,16 @@ class PublicationFragment : Fragment(), PublicationAdapter.ClickListener, Reques
     }
 
     override fun <T>onSuccess(result: T) {
-        publicationsArray = result as MutableList<Publication>
+        val items = result as MutableList<Publication>
+        items.forEach {
+            for (i in 0 until publicationsArray.size) {
+                if (it.id == publicationsArray[i].id) {
+                    it.isFavorite = publicationsArray[i].isFavorite
+                    it.countOfLikes += 1
+                }
+            }
+        }
+        publicationsArray = items as MutableList<Publication>
         adapter.addItems(publicationsArray)
     }
 
@@ -66,8 +78,13 @@ class PublicationFragment : Fragment(), PublicationAdapter.ClickListener, Reques
     }
 
     override fun onLikeClick(item: Publication, position: Int) {
-//         changeState(item)
-//         adapter.update(position)
+        publicationsArray.forEach {
+            if (it == item) {
+                changeState(it)
+                repository.updateChangeFavoriteState(it)
+            }
+            adapter.update(position)
+        }
     }
 
     override fun onCommentClick(item: Publication) {
