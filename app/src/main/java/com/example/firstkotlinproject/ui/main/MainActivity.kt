@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.firsthomework.R
 import com.example.firstkotlinproject.ui.favorites.FavoritesFragment
-import com.example.firstkotlinproject.ui.publication.PublicationFragment
 import com.example.firstkotlinproject.ui.main.adapter.MainViewPagerAdapter
 import com.example.firstkotlinproject.ui.profile.ProfileFragment
+import com.example.firstkotlinproject.ui.publication.PublicationFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setupBottomNavigationView()
     }
 
-    private fun setupViewPager(){
+    private fun setupViewPager() {
         adapter = MainViewPagerAdapter(this)
         adapter.addFragment(PublicationFragment())
         adapter.addFragment(FavoritesFragment())
@@ -46,6 +46,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun changeCurrentItem(position: Int) {
         view_pager.setCurrentItem(position, false)
+        
     }
+
+
 }
 
